@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Services() {
   return (
     <section className="text-pink-600 body-font py-24">
@@ -17,17 +19,17 @@ export default function Services() {
                     {service.icon}
                   </div>
                   <h2 className="text-lg font-medium text-gray-900 mb-2">{service.title}</h2>
-                  <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                    {service.category}
-                  </h3>
+                  <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{service.category}</h3>
                   <p className="text-pink-500">{service.description}</p>
+                  <p className="mt-4 text-gray-900 font-semibold">{service.price}</p>
                 </div>
-                <div className="mt-4">
-                  <p className="text-gray-900 font-semibold mb-3">{service.price}</p>
-                  <button className="bg-pink-500 text-white py-2 px-4 rounded-lg hover:bg-pink-600 transition">
+                
+                {/* Check Availability Button */}
+                <Link href="/booking">
+                  <button className="mt-4 bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-full transition duration-300">
                     Check Availability
                   </button>
-                </div>
+                </Link>
               </div>
             </div>
           ))}
@@ -41,65 +43,57 @@ const services = [
   {
     icon: "🛁",
     title: "Aromatherapy Massage",
-    description:
-      "Relax your muscles and calm your mind with a soothing aromatherapy massage using essential oils.",
+    description: "Relax your muscles and calm your mind with a soothing aromatherapy massage using essential oils.",
     category: "Massage",
-    price: "Birr 80.00",
+    price: "Birr 80.00"
   },
   {
     icon: "💆‍♀️",
     title: "Facial Treatment",
-    description:
-      "Revitalize your skin with a deep-cleansing facial, tailored to your skin type for a glowing complexion.",
+    description: "Revitalize your skin with a deep-cleansing facial, tailored to your skin type for a glowing complexion.",
     category: "Skincare",
-    price: "Birr 100.00",
+    price: "Birr 100.00"
   },
   {
     icon: "🌿",
     title: "Herbal Steam Bath",
-    description:
-      "Detoxify your body and promote relaxation with an herbal steam bath, packed with natural healing benefits.",
+    description: "Detoxify your body and promote relaxation with an herbal steam bath, packed with natural healing benefits.",
     category: "Detox",
-    price: "Birr 60.00",
+    price: "Birr 60.00"
   },
   {
     icon: "💅",
     title: "Manicure & Pedicure",
-    description:
-      "Pamper your hands and feet with a relaxing manicure and pedicure, leaving your nails smooth and polished.",
+    description: "Pamper your hands and feet with a relaxing manicure and pedicure, leaving your nails smooth and polished.",
     category: "Nail Care",
-    price: "Birr 50.00",
+    price: "Birr 50.00"
   },
   {
     icon: "🛁",
     title: "Aromatherapy Massage",
-    description:
-      "Relax your muscles and calm your mind with a soothing aromatherapy massage using essential oils.",
+    description: "Relax your muscles and calm your mind with a soothing aromatherapy massage using essential oils.",
     category: "Massage",
-    price: "Birr 80.00",
+    price: "Birr 80.00"
   },
   {
     icon: "💆‍♀️",
     title: "Facial Treatment",
-    description:
-      "Revitalize your skin with a deep-cleansing facial, tailored to your skin type for a glowing complexion.",
+    description: "Revitalize your skin with a deep-cleansing facial, tailored to your skin type for a glowing complexion.",
     category: "Skincare",
-    price: "Birr 100.00",
+    price: "Birr 100.00"
   },
   {
     icon: "🌿",
     title: "Herbal Steam Bath",
-    description:
-      "Detoxify your body and promote relaxation with an herbal steam bath, packed with natural healing benefits.",
+    description: "Detoxify your body and promote relaxation with an herbal steam bath, packed with natural healing benefits.",
     category: "Detox",
-    price: "Birr 60.00",
+    price: "Birr 60.00"
   },
   {
     icon: "💅",
     title: "Manicure & Pedicure",
-    description:
-      "Pamper your hands and feet with a relaxing manicure and pedicure, leaving your nails smooth and polished.",
+    description: "Pamper your hands and feet with a relaxing manicure and pedicure, leaving your nails smooth and polished.",
     category: "Nail Care",
-    price: "Birr 50.00",
-  },
+    price: "Birr 50.00"
+  }
 ];

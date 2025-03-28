@@ -4,8 +4,11 @@ export default function BlogSection() {
   return (
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="container px-5 py-24 mx-auto">
+        {/* Title for Blog Section */}
+        <h1 className="text-4xl font-bold text-center mb-20">Blog</h1>
+
         <div className="-my-8 divide-y-2 divide-gray-100">
-          {[
+          {[  
             {
               title: "Bitters hashtag waistcoat fashion axe chia unicorn",
               date: "12 Jun 2019",

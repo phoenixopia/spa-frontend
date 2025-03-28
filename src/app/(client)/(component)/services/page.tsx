@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Services() {
   return (
     <section className="text-pink-600 body-font py-24">
-      <div className="container px-5 mx-auto">
+      <div className="container px-15 mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-3xl font-bold text-pink-700">Our Spa Services</h1>
           <p className="mt-2 text-pink-500">

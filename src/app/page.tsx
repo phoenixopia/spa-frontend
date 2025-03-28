@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Header from "./(component)/header/page";
-import Slider from "../app/(component)/home/home";
-import PaymentTool from "./(component)/home/page";
-import Aboutus from "./(component)/aboutus/page";
-import Services from "./(component)/services/page";
-import Blog from "./(component)/blog/page";
-import Footer from "./(component)/footer/page";
-import ContactUs from "./(component)/contactus/page";  
-import Testimonials from "./(component)/testimonials/page";
+import Header from "./(client)/(component)/header/page";
+import Slider from "./(client)/(component)/home/home";
+import PaymentTool from "./(client)/(component)/home/page";
+import Aboutus from "./(client)/(component)/aboutus/page";
+import Services from "./(client)/(component)/services/page";
+import Blog from "./(client)/(component)/blog/page";
+import Footer from "./(client)/(component)/footer/page";
+import ContactUs from "./(client)/(component)/contactus/page";  
+import Testimonials from "./(client)/(component)/testimonials/page";
 
 
 

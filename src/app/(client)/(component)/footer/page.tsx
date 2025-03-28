@@ -21,7 +21,8 @@ const Footer = () => {
             <li key={index}>
               <Link 
                 href={item.link} 
-                className="hover:text-pink-500 mx-4 transition-colors duration-300"
+                className="mx-4 px-3 py-1 rounded-lg transition-colors duration-300 
+                           hover:bg-pink-200 hover:text-pink-700"
               >
                 {item.name}
               </Link>

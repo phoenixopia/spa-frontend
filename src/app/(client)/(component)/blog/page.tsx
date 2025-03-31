@@ -2,13 +2,13 @@ import Link from "next/link";
 
 export default function BlogSection() {
   return (
-    <section className="text-gray-600 body-font overflow-hidden">
+    <section className="text-gray-600 body-font overflow-hidden relative">
       <div className="container px-5 py-24 mx-auto">
         {/* Title for Blog Section */}
         <h1 className="text-4xl font-bold text-center mb-20">Blog</h1>
 
         <div className="-my-8 divide-y-2 divide-gray-100">
-          {[  
+          {[
             {
               title: "Bitters hashtag waistcoat fashion axe chia unicorn",
               date: "12 Jun 2019",
@@ -36,7 +36,7 @@ export default function BlogSection() {
               className="py-8 flex flex-wrap md:flex-nowrap"
             >
               <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col px-6">
-                <span className="font-semibold title-font text-gray-700">{item.category}</span>
+                <span className="font-semibold title-font">{item.category}</span>
                 <span className="mt-1 text-gray-500 text-sm">{item.date}</span>
               </div>
               <div className="md:flex-grow px-6">
@@ -46,7 +46,7 @@ export default function BlogSection() {
                 <p className="leading-relaxed">{item.description}</p>
                 <Link
                   href="#"
-                  className="text-pink-300 inline-flex items-center mt-4"
+                  className="text-[#633466] inline-flex items-center mt-4"
                 >
                   Learn More
                   <svg
@@ -67,6 +67,26 @@ export default function BlogSection() {
           ))}
         </div>
       </div>
+
+      {/* See More Button at the bottom right */}
+      <Link
+        href="#"
+        className="absolute bottom-6 right-6 bg-[#633466] hover:bg-purple-600 text-white py-2 px-4 rounded-lg flex items-center space-x-2"
+        >
+        <span>See More</span>
+        <svg
+          className="w-4 h-4"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M5 12h14"></path>
+          <path d="M12 5l7 7-7 7"></path>
+        </svg>
+      </Link>
     </section>
   );
 }

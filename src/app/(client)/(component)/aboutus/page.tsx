@@ -3,7 +3,7 @@ import Link from "next/link"; // Import Link from next/link
 
 const Aboutus: React.FC = () => {
   return (
-    <section className="text-gray-600 body-font bg-white"> {/* Added bg-white here */}
+    <section className="text-gray-600 body-font bg-gray-100"> {/* Added bg-white here */}
       <div className="container mx-auto flex px-20 py-24 md:flex-row flex-col items-center gap-10">
         {/* Text Content */}
         <div className="lg:flex-grow lg:ml-30 lg:pr-20 md:w-1/3 flex flex-col md:items-start text-left mb-16 md:mb-0 items-center">
@@ -18,7 +18,7 @@ const Aboutus: React.FC = () => {
           {/* Button Link to About Us Detail Page */}
           <div className="flex justify-center w-full">
             <Link href="/aboutusdetail">
-              <div className="inline-flex items-center text-white bg-purple-600 hover:bg-purple-700 mt-8 px-6 py-3 border-2 border-purple-600 rounded-lg text-lg cursor-pointer transition-colors duration-300">
+              <div className="inline-flex items-center text-white bg-[#633466] hover:bg-purple-600 mt-8 px-6 py-3 border-2 border-[#633466] rounded-lg text-lg cursor-pointer transition-colors duration-300">
                 Read More
               </div>
             </Link>

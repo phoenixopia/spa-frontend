@@ -52,7 +52,7 @@ export default function Header() {
             href="/"
             className="flex items-center text-gray-900 text-xl font-bold"
           >
-            <span className="ml-1 text-purple-600">Spa Haven</span>
+            <span className="ml-1 text-[#633466]">Spa Haven</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -61,7 +61,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.path}
-                className="px-4 py-2 rounded-lg transition hover:bg-purple-600 hover:text-white"
+                className="px-4 py-2 rounded-lg transition hover:bg-[#633466] hover:text-white"
               >
                 {item.name}
               </Link>
@@ -69,7 +69,7 @@ export default function Header() {
             {/* Booking Link */}
             <Link
               href="/booking"
-              className="px-6 py-2 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition"
+              className="px-6 py-2 bg-[#633466] text-white font-semibold rounded-lg hover:bg-[#633466] transition"
             >
               Booking
             </Link>
@@ -88,7 +88,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.path}
-                className="w-full text-center py-3 px-6 rounded-lg transition hover:bg-purple-600 hover:text-white"
+                className="w-full text-center py-3 px-6 rounded-lg transition hover:bg-[#633466] hover:text-white"
               >
                 {item.name}
               </Link>
@@ -96,17 +96,21 @@ export default function Header() {
             {/* Booking Link for Mobile */}
             <Link
               href="/booking"
-              className="w-full text-center py-3 px-6 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 transition"
+              className="w-full text-center py-3 px-6 bg-[#633466] text-white font-semibold rounded-lg shadow-md hover:bg-purple-600 transition"
             >
               Booking
             </Link>
           </nav>
         )}
       </header>
+
+
       {/* Adjust padding to avoid overlap */}
-      <div className="pt-24">
+      {/* <div className="pt-24"> */}
         {/* Your main content goes here */}
-      </div>
+      {/* </div>  */}
+
+
     </>
   );
 }

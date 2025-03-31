@@ -18,7 +18,7 @@ const PaymentTool: React.FC = () => {
           
           <a
             href="/booking"
-            className="px-6 py-3 text-lg font-medium bg-purple-600 text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+            className="px-6 py-3 text-lg font-medium bg-[#633466] text-white rounded-lg hover:bg-purple focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
           >
             Book Now
           </a>

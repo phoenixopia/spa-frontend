@@ -48,17 +48,20 @@ export default function Header() {
       <header className="fixed top-0 left-0 w-full bg-white z-50 shadow-md">
         <div className="container mx-auto flex justify-between items-center p-5">
           {/* Logo */}
-          <Link href="/" className="flex items-center text-gray-900 text-xl font-bold">
-            <span className="ml-1 text-pink-400">Spa Haven</span>
+          <Link
+            href="/"
+            className="flex items-center text-gray-900 text-xl font-bold"
+          >
+            <span className="ml-1 text-purple-600">Spa Haven</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex space-x-6 text-gray-600">
+          <nav className="hidden lg:flex space-x-1 text-gray-600">
             {navItems.map((item, index) => (
               <Link
                 key={item.name}
                 href={item.path}
-                className={`${index === 0 ? "text-pink-500" : "hover:text-pink-500"}`}
+                className="px-4 py-2 rounded-lg transition hover:bg-purple-600 hover:text-white"
               >
                 {item.name}
               </Link>
@@ -66,7 +69,7 @@ export default function Header() {
             {/* Booking Link */}
             <Link
               href="/booking"
-              className="px-6 py-2 bg-pink-500 text-white font-semibold rounded-lg hover:bg-pink-600 transition"
+              className="px-6 py-2 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition"
             >
               Booking
             </Link>
@@ -85,7 +88,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.path}
-                className="w-full text-center py-3 px-6 bg-pink-500 text-white font-semibold rounded-lg shadow-md hover:bg-pink-600 transition"
+                className="w-full text-center py-3 px-6 rounded-lg transition hover:bg-purple-600 hover:text-white"
               >
                 {item.name}
               </Link>
@@ -93,14 +96,13 @@ export default function Header() {
             {/* Booking Link for Mobile */}
             <Link
               href="/booking"
-              className="w-full text-center py-3 px-6 bg-pink-500 text-white font-semibold rounded-lg shadow-md hover:bg-pink-600 transition"
+              className="w-full text-center py-3 px-6 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 transition"
             >
               Booking
             </Link>
           </nav>
         )}
       </header>
-
       {/* Adjust padding to avoid overlap */}
       <div className="pt-24">
         {/* Your main content goes here */}

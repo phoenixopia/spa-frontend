@@ -13,7 +13,7 @@ const Testimonials = () => {
   const swiperRef = useRef<SwiperCore | null>(null);
 
   return (
-    <section className="relative w-full bg-brown-700 py-24">
+    <section className="relative w-full bg-white py-24"> {/* Changed bg-brown-700 to bg-white */}
       <div className="container mx-auto px-20">
         <h1 className="text-4xl font-bold text-center text-[#F6D1D1] mb-12">Testimonials</h1>
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link"; // Import Link from next/link
 
-const Aboutus: React.FC = () => {
+const Aboutusdetail: React.FC = () => {
   return (
     <section className="text-gray-600 body-font bg-white"> {/* Added bg-white here */}
       <div className="container mx-auto flex px-20 py-24 md:flex-row flex-col items-center gap-10">
@@ -17,11 +17,7 @@ const Aboutus: React.FC = () => {
 
           {/* Button Link to About Us Detail Page */}
           <div className="flex justify-center w-full">
-            <Link href="/aboutusdetail">
-              <div className="inline-flex items-center text-white bg-purple-600 hover:bg-purple-700 mt-8 px-6 py-3 border-2 border-purple-600 rounded-lg text-lg cursor-pointer transition-colors duration-300">
-                Read More
-              </div>
-            </Link>
+            
           </div>
         </div>
 
@@ -34,4 +30,4 @@ const Aboutus: React.FC = () => {
   );
 };
 
-export default Aboutus;
+export default Aboutusdetail;

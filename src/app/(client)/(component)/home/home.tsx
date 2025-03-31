@@ -39,7 +39,7 @@ export default function Carousel() {
                 {/* Description */}
                 <p className="mb-8 pr-48">{slide.description}</p>
                 {/* Book Now Button */}
-                <button className="bg-pink-500 text-white font-semibold my-6 px-6 py-2 rounded-lg hover:bg-pink-600 transition">
+                <button className="bg-purple-600 text-white font-semibold my-6 px-6 py-2 rounded-lg hover:bg-pink-600 transition">
                   Book Now
                 </button>
               </div>

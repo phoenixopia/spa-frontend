@@ -83,12 +83,12 @@ export default function SpaServices() {
 
         {/* Swiper Carousel */}
         <Swiper
-          spaceBetween={20}
+          spaceBetween={1}
           slidesPerView={1}
           breakpoints={{
             640: { slidesPerView: 1 },
             768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
+            1030: { slidesPerView: 3 },
           }}
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -99,11 +99,11 @@ export default function SpaServices() {
           {services.map((service, index) => (
             <SwiperSlide key={index}>
               <motion.div
-                className="service-item bg-white px-4 py-6 rounded-xl shadow-xl text-center h-full flex flex-col justify-between transition duration-300 transform hover:scale-105"
+                className="service-item bg-white px-6 py-8 rounded-xl shadow-xl text-center h-full flex flex-col justify-between transition duration-300 transform hover:scale-105"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                style={{ width: "100%", maxWidth: "320px", margin: "0 auto" }}
+                style={{ width: "100%", maxWidth: "350px", margin: "0 auto" }} // Increased size
               >
                 <div>
                   <div className="w-14 h-14 mx-auto flex items-center justify-center rounded-full bg-pink-200 text-pink-700 mb-4 text-3xl">
@@ -114,7 +114,7 @@ export default function SpaServices() {
                   <p className="text-gray-600 text-sm">{service.description}</p>
                   <p className="mt-3 text-gray-900 font-semibold text-lg">{service.price}</p>
                 </div>
-                <Link href="/booking">
+                <Link href="/booking" legacyBehavior>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -140,7 +140,6 @@ export default function SpaServices() {
           </svg>
         </div>
       </div>
-
       {/* Custom Cursor Style */}
       <style jsx>{`
         .service-item:hover {

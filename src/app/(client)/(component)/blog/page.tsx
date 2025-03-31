@@ -44,7 +44,10 @@ export default function BlogSection() {
                   {item.title}
                 </h2>
                 <p className="leading-relaxed">{item.description}</p>
-                <Link href="#" className="text-pink-300 inline-flex items-center mt-4">
+                <Link
+                  href="#"
+                  className="text-pink-300 inline-flex items-center mt-4"
+                >
                   Learn More
                   <svg
                     className="w-4 h-4 ml-2"

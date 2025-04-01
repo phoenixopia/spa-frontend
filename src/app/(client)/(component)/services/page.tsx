@@ -10,6 +10,8 @@ import "swiper/css/navigation";
 import { useRef, useState, useEffect } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import axios from "axios";
+import { url } from "inspector";
+const URL = process.env.NEXT_PUBLIC_APP_URL;
 
 export default function SpaServices() {
   const swiperRef = useRef<SwiperType | null>(null);
@@ -26,7 +28,7 @@ export default function SpaServices() {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get<{ data: Service[] }>("https://spa-backend-dev.vercel.app/api/service");
+        const response = await axios.get<{ data: Service[] }>(`${URL}/blog`);
         console.log(response.data, "\n\n");
         
         if (Array.isArray(response.data.data)) {

@@ -23,5 +23,6 @@ export default function BlogSection() {
         <h2 className="text-3xl font-bold text-center mt-15">Blog</h2>
       </div>
     </header>
+
   );
 }

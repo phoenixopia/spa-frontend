@@ -16,6 +16,8 @@
   color: #d1d5db; /* Default Tailwind gray-300 */
 }
 
+
+
 /* 3. Custom font class */
 .font-Italianno {
   font-family: 'Italianno', cursive;
@@ -54,4 +56,30 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  position: relative;
+  background-image: url('/images/back.jpeg') !important;
+  background-repeat: repeat !important; /* Duplicates the image */
+  background-size: auto !important; /* Keeps the original size */
+  background-position: top left !important; /* Aligns the image */
+}
+
+/* Stronger Blur + Whitish Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: inherit; /* Inherit background image */
+  background-repeat: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  filter: blur(20px); /* Increased blur effect */
+  z-index: -1; /* Keep behind content */
+  opacity: 0.95; /* Increased opacity for a more whitish effect */
+  background-color: rgba(255, 255, 255, 0.5); /* Whitish tint overlay */
 }

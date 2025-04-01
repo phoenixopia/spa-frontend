@@ -13,6 +13,9 @@ import ContactUs from "./(client)/(component)/contactus/page";
 import Testimonials from "./(client)/(component)/testimonials/page";
 import Opening from "./(client)/(component)/opening/page";
 import MapPage from "./(client)/(component)/map/page";
+import "./globals.css";
+import { Inter } from "next/font/google";
+
 
 
 

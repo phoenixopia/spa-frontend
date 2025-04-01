@@ -48,12 +48,12 @@ export default function BlogSection() {
       {/* Blog Title */}
       <h2 className="text-3xl font-bold text-center mb-15">Blog</h2>
 
-{/* Blog Cards */}
-<div className="flex flex-col gap-20">
+
+      <div className="flex flex-col h-full border-gray-300 gap-20">
   {blogs.slice(0, 2).map((blog) => (
-    <Link key={blog.slug} href={`/blog/${blog.slug}`} className="flex flex-col md:flex-row w-full border border-gray-300 rounded-lg shadow-lg overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-700">
+    <div key={blog.slug} className="flex flex-col md:flex-row  border flex-grow rounded-lg shadow-lg overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-700">
       {/* Left Side - Image */}
-      <div className="bg-[#633466] px-4 md:rounded-none flex items-center justify-center md:w-1/3 h-full flex-grow">
+      <div className="bg-[#633466] px-4 md:rounded-none flex items-center justify-center md:w-1/3 h-full ">
         <Image
           className="object-cover w-full h-full"
           src="/Images/aboutus.png"
@@ -63,16 +63,20 @@ export default function BlogSection() {
         />
       </div>
       {/* Right Side - Text */}
-      <div className="flex flex-col justify-between py-8 px-4 leading-normal bg-[#633466] w-full md:w-2/3 h-full">
+      <div className="flex flex-col justify-between py-8 px-4 leading-normal bg-[#633466] w-full md:w-2/3 h-full flex-grow">
         <p className="mb-2 text-xl font-bold tracking-tight text-white">{blog.title}</p>
         <p className="mb-10 text-sm font-normal text-white">{blog.description}</p>
-        <p className="text-xs text-white font-light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus repellendus sapiente veniam dolorem tenetur accusantium, sequi autem laboriosam, assumenda voluptate quidem quae ex eveniet eligendi nulla id, aut voluptates ratione?</p>
+        <p className="text-xs text-white font-light">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus repellendus sapiente veniam dolorem tenetur accusantium, sequi autem laboriosam, assumenda voluptate quidem quae ex eveniet eligendi nulla id, aut voluptates ratione?
+        </p>
         <p className="text-xs text-white text-right">{blog.date}</p>
         <p className="text-xs text-light text-white text-right mt-3">{blog.date} Jan 3, 2034</p>
       </div>
-    </Link>
+    </div>
   ))}
 </div>
+
+
 
 
 

@@ -35,9 +35,9 @@ export default function Header() {
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "About Us", path: "/aboutus" },
+    { name: "About Us", path: "/aboutusdetail" },
     { name: "Services", path: "/services" },
-    { name: "Blog", path: "/blog" },
+    { name: "Blog", path: "/blogs" },
     { name: "Testimonials", path: "/testimonials" },
     { name: "Contact Us", path: "/contactus" },
   ];
@@ -106,7 +106,7 @@ export default function Header() {
 
 
       {/* Adjust padding to avoid overlap */} 
-      <div className="pt-24">
+      <div className="pt-30">
         {/* Your main content goes here */}
        </div> 
 

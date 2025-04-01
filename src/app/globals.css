@@ -31,9 +31,7 @@
   --secondary-color: #03DAC6;
 }
 
-.bg-primary-color {
-  background-color: var(--primary-color);
-}
+
 
 /* 5. Tailwind theme configuration (if needed) */
 @theme inline {

@@ -1,0 +1,121 @@
+"use client";
+
+import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import { motion } from "framer-motion";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { useRef, useState, useEffect } from "react";
+import type { Swiper as SwiperType } from "swiper";
+import axios from "axios";
+import { url } from "inspector";
+const URL = process.env.NEXT_PUBLIC_APP_URL;
+
+export default function SpaServices() {
+  const swiperRef = useRef<SwiperType | null>(null);
+  interface Service {
+    title: string;
+    description: string;
+    price: string;
+    image?: string;
+  }
+
+  const [services, setServices] = useState<Service[]>([]); // Initialize as an empty array
+  const [loading, setLoading] = useState(true); // Track loading state
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await axios.get<{ data: Service[] }>(`${URL}/blog`);
+        console.log(response.data, "\n\n");
+        
+        if (Array.isArray(response.data.data)) {
+          setServices(response.data.data);
+        } else {
+          console.error("Unexpected API response:", response.data);
+        }
+      } catch (error) {
+        console.error("Error fetching services:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
+  return (
+    <section className="text-gray-700 body-font py-16 relative">
+      <div className="container px-20 mx-auto">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1 className="text-3xl font-bold text-gray-800">Our Services</h1>
+          <p className="mt-2 text-gray-800">
+            We have been working with some Fortune 500+ clients.
+          </p>
+        </motion.div>
+
+        {loading ? (
+          <p className="text-center">Loading services...</p>
+        ) : services.length === 0 ? (
+          <p className="text-center">No services available.</p>
+        ) : (
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1030: { slidesPerView: 3 },
+            }}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            modules={[Pagination, Navigation, Autoplay]}
+            className="mySwiper"
+            onSwiper={(swiper) => (swiperRef.current = swiper)}
+          >
+            {services.map((service, index) => (
+              <SwiperSlide key={index}>
+                <motion.div
+                  className="service-item bg-white px-6 py-8 rounded-xl shadow-xl text-center h-full flex flex-col justify-between transition duration-300 transform hover:scale-105"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  style={{ width: "100%", maxWidth: "350px", margin: "0 auto" }}
+                >
+                  <div>
+                    <div className="mb-4">
+                      <img
+                        src={service.image || "/Images/service.png"}
+                        alt={service.title}
+                        className="w-full h-48 object-cover rounded-xl"
+                      />
+                    </div>
+                    <h2 className="text-lg font-semibold text-gray-900">{service.title}</h2>
+                    <p className="text-gray-600 text-sm">{service.description}</p>
+                    <p className="mt-3 text-gray-900 font-semibold text-lg">{service.price}</p>
+                  </div>
+                  <Link href="/booking" legacyBehavior>
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="mt-4 bg-white text-[#633466] border-2 hover:bg-purple-600 border-[#633466] font-semibold py-3 px-6 rounded-lg transition duration-300"
+                    >
+                      Details
+                    </motion.button>
+                  </Link>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
+      </div>
+    </section>
+  );
+}

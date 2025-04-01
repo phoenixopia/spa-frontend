@@ -1,116 +1,14 @@
-"use client";
-import { useState } from "react";
-import Link from "next/link";
-
-const MenuIcon = () => (
-  <svg
-    className="w-6 h-6"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    viewBox="0 0 24 24"
-  >
-    <path d="M4 6h16M4 12h16M4 18h16"></path>
-  </svg>
-);
-
-const CloseIcon = () => (
-  <svg
-    className="w-6 h-6"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    viewBox="0 0 24 24"
-  >
-    <path d="M6 18L18 6M6 6l12 12"></path>
-  </svg>
-);
-
-export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/aboutusdetail" },
-    { name: "Services", path: "/services" },
-    { name: "Blog", path: "/blogs" },
-    { name: "Testimonials", path: "/testimonials" },
-    { name: "Contact Us", path: "/contactus" },
-  ];
-
+import React from 'react'
+import Testimonials from '@/app/component/Testimonials'
+import Footer from "@/app/component/footer";
+import MapPage from "@/app/component/map";
+import Header from '@/app/component/header';
+const page = () => {
   return (
-    <>
-      {/* Fixed Header */}
-      <header className="fixed top-0 left-0 w-full bg-white z-50 shadow-md">
-        <div className="container mx-auto flex justify-between items-center p-5">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center text-gray-900 text-xl font-bold"
-          >
-            <span className="ml-1 text-[#633466]">Spa Haven</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex space-x-1 text-gray-600">
-            {navItems.map((item, index) => (
-              <Link
-                key={item.name}
-                href={item.path}
-                className="px-4 py-2 rounded-lg transition hover:bg-[#633466] hover:text-white"
-              >
-                {item.name}
-              </Link>
-            ))}
-            {/* Booking Link */}
-            <Link
-              href="/booking"
-              className="px-6 py-2 bg-[#633466] text-white font-semibold rounded-lg hover:bg-[#633466] transition"
-            >
-              Booking
-            </Link>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <CloseIcon /> : <MenuIcon />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <nav className="lg:hidden bg-white border-t border-gray-200 p-4 flex flex-col items-center space-y-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.path}
-                className="w-full text-center py-3 px-6 rounded-lg transition hover:bg-[#633466] hover:text-white"
-              >
-                {item.name}
-              </Link>
-            ))}
-            {/* Booking Link for Mobile */}
-            <Link
-              href="/booking"
-              className="w-full text-center py-3 px-6 bg-[#633466] text-white font-semibold rounded-lg shadow-md hover:bg-purple-600 transition"
-            >
-              Booking
-            </Link>
-          </nav>
-        )}
-      </header>
-
-
-      {/* Adjust padding to avoid overlap */} 
-      <div className="pt-30">
-        {/* Your main content goes here */}
-       </div> 
-
-
-    </>
-  );
+    <div>
+      <Header/>
+    </div>
+  )
 }
+
+export default page

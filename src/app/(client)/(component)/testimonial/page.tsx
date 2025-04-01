@@ -2,15 +2,13 @@ import React from 'react'
 import Testimonials from '@/app/component/Testimonials'
 import Footer from "@/app/component/footer";
 import MapPage from "@/app/component/map";
-import Home from '@/app/component/home';
-
-const PaymentTool = () => {
+const page = () => {
   return (
     <div>
-      <Home/>
+      <Testimonials/>
       
     </div>
   )
 }
 
-export default PaymentTool
+export default page

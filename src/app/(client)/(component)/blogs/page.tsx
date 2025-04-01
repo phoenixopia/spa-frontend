@@ -1,28 +1,17 @@
-'use client';
-import Image from "next/image";
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { header } from "framer-motion/client";
-const URL = process.env.NEXT_PUBLIC_APP_URL;
-
-interface Blog {
-  title: string;
-  description: string;
-  category?: string;
-  date: string;
-  slug: string;
-}
-
-export default function BlogSection() {
-
+import React from 'react'
+import Testimonials from '@/app/component/Testimonials'
+import Footer from "@/app/component/footer";
+import MapPage from "@/app/component/map";
+import Services from '@/app/component/services'
+import Blogs from '@/app/component/blogs';
+const page = () => {
   return (
-    <header>
-      <div className="max-w-4xl mx-auto p-6">
-        {/* Blog Title */}
-        <h2 className="text-3xl font-bold text-center mt-15">Blog</h2>
-      </div>
-    </header>
-
-  );
+    <div>
+      <Blogs/>
+      <MapPage/>
+      <Footer/>
+    </div>
+  )
 }
+
+export default page

@@ -7,6 +7,15 @@
 /* 2. Tailwind CSS imports */
 @import "tailwindcss";
 
+/* Custom Rating Colors */
+.rating svg {
+  color: #EB72E6; /* Change rated stars color */
+}
+
+.rating .unrated {
+  color: #d1d5db; /* Default Tailwind gray-300 */
+}
+
 /* 3. Custom font class */
 .font-Italianno {
   font-family: 'Italianno', cursive;

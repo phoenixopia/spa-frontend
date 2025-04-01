@@ -51,18 +51,7 @@ const Opening = () => {
 
 
 
-      {/* Map Section */}
-      <div className="w-full h-96 overflow-hidden relative">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7880.937492394156!2d38.78739609357908!3d9.02093260000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b855cd643a691%3A0x5ce3922436b4f99a!2sMegenagna!5e0!3m2!1sen!2set!4v1743414910379!5m2!1sen!2set"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
-      </div>
+      
     </section>
   );
 };

@@ -105,10 +105,10 @@ export default function Header() {
       </header>
 
 
-      {/* Adjust padding to avoid overlap */}
-      {/* <div className="pt-24"> */}
+      {/* Adjust padding to avoid overlap */} 
+      <div className="pt-24">
         {/* Your main content goes here */}
-      {/* </div>  */}
+       </div> 
 
 
     </>

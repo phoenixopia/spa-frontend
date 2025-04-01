@@ -1,50 +1,60 @@
 "use client";
 
+import { useState } from 'react';
+import { Rating } from '@material-tailwind/react';
+
 const ContactUs = () => {
+  const [value, setValue] = useState<number | undefined>(undefined);
+
   return (
-    <section className="flex items-center justify-center min-h-screen bg-brown-100 dark:bg-brown-900 px-4">
-      <div className="max-w-lg w-full bg-pink-100 dark:bg-pink-200 rounded-2xl shadow-lg p-8">
-        <h2 className="text-3xl font-extrabold text-center text-brown-700 dark:text-brown-800 mb-4">Contact Us</h2>
-        <p className="text-center text-brown-600 dark:text-brown-700 mb-6">
-          Have any questions or feedback? We’d love to hear from you!
-        </p>
-        <form action="#" className="space-y-5">
+      <div className="w-80 bg-[#98439D] rounded-2xl shadow-lg p-6">
+                <h2 className="text-xl font-bold text-center text-white mb-3">Share your experience</h2>
+                <p className="text-xl font-bold text-center text-white mb-3">How would you rate us?</p>
+
+                <div className="flex flex-col items-center gap-4">
+      <Rating
+        value={value}
+        onChange={(newValue) => setValue(newValue)}
+        unratedColor="pink"
+        ratedColor="purple"
+        placeholder="Rate us"
+        onPointerEnterCapture={() => {}}
+        onPointerLeaveCapture={() => {}}
+      />
+        </div>
+        <form action="#" className="space-y-3">
           <div>
-            <label className="block text-sm font-medium text-brown-700 dark:text-brown-800">Your email</label>
             <input 
               type="email" 
-              className="w-full p-3 border border-brown-300 rounded-lg shadow-sm focus:ring-brown-500 focus:border-brown-500 dark:bg-white dark:border-brown-400 dark:text-brown-800" 
-              placeholder="name@example.com" 
+              className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500" 
+              placeholder="Email" 
               required 
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-brown-700 dark:text-brown-800">Subject</label>
             <input 
               type="text" 
-              className="w-full p-3 border border-brown-300 rounded-lg shadow-sm focus:ring-brown-500 focus:border-brown-500 dark:bg-white dark:border-brown-400 dark:text-brown-800" 
-              placeholder="How can we help you?" 
+              className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500" 
+              placeholder="Subject" 
               required 
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-brown-700 dark:text-brown-800">Your message</label>
             <textarea 
-              rows={4} 
-              className="w-full p-3 border border-brown-300 rounded-lg shadow-sm focus:ring-brown-500 focus:border-brown-500 dark:bg-white dark:border-brown-400 dark:text-brown-800" 
-              placeholder="Write your message here..." 
+              rows={3} 
+              className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500" 
+              placeholder="Message" 
               required 
             />
           </div>
           <button 
             type="submit" 
-            className="w-full py-3 text-white font-medium bg-pink-500 rounded-lg hover:bg-brown-800 focus:ring-4 focus:ring-brown-300 dark:bg-brown-600 dark:hover:bg-brown-700 dark:focus:ring-brown-800"
+            className="w-full py-2 text-white font-medium bg-purple-600 rounded-md hover:bg-purple-700 focus:ring-4 focus:ring-purple-300"
           >
             Send Message
           </button>
         </form>
       </div>
-    </section>
   );
 };
 

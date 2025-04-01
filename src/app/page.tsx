@@ -12,19 +12,21 @@ import Footer from "./(client)/(component)/footer/page";
 import ContactUs from "./(client)/(component)/contactus/page";  
 import Testimonials from "./(client)/(component)/testimonials/page";
 import Opening from "./(client)/(component)/opening/page";
+import MapPage from "./(client)/(component)/map/page";
 
 
 
 
 export default function Home() {
   return (
-    <div className="relative bg-cover bg-primary-color bg-center h-screen" style={{ backgroundImage: 'url("/Image/banner-bg.jpg")' }}>
+    <div suppressHydrationWarning  className="relative bg-cover bg-primary-color bg-center h-screen" style={{ backgroundImage: 'url("/Image/banner-bg.jpg")' }}>
       <PaymentTool />
       <Services />
       <Aboutus />
       <Blog />
       <Testimonials />
       <Opening/>
+      <MapPage />
       <Footer />
     </div>
   );

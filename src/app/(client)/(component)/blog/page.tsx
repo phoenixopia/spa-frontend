@@ -1,92 +1,95 @@
+'use client';
+import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import axios from "axios";
+const URL = process.env.NEXT_PUBLIC_APP_URL;
+
+interface Blog {
+  title: string;
+  description: string;
+  category?: string;
+  date: string;
+  slug: string;
+}
 
 export default function BlogSection() {
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get<{ data: Blog[] }>(`${URL}/blog`);
+        console.log("API URL:", `${URL}/blog\n\n`);
+        console.log(response.data, "\n\n");
+        
+        if (Array.isArray(response.data.data)) {
+          setBlogs(response.data.data);
+        } else {
+          console.error("Unexpected API response:", response.data);
+        }
+      } catch (error) {
+        console.error("Error fetching blog:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  if (loading) {
+    return <p className="text-gray-700 text-center">Loading...</p>;
+  }
+
   return (
-    <section className="text-gray-600 body-font overflow-hidden relative">
-      <div className="container px-5 py-24 mx-auto">
-        {/* Title for Blog Section */}
-        <h1 className="text-4xl font-bold text-center mb-20">Blog</h1>
+    <div className="max-w-4xl mx-auto p-6">
+      {/* Blog Title */}
+      <h2 className="text-3xl font-bold text-center mb-15">Blog</h2>
 
-        <div className="-my-8 divide-y-2 divide-gray-100">
-          {[
-            {
-              title: "Bitters hashtag waistcoat fashion axe chia unicorn",
-              date: "12 Jun 2019",
-              category: "CATEGORY",
-              description:
-                "Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.",
-            },
-            {
-              title: "Meditation bushwick direct trade taxidermy shaman",
-              date: "12 Jun 2019",
-              category: "CATEGORY",
-              description:
-                "Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.",
-            },
-            {
-              title: "Woke master cleanse drinking vinegar salvia",
-              date: "12 Jun 2019",
-              category: "CATEGORY",
-              description:
-                "Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.",
-            },
-          ].map((item, index) => (
-            <div
-              key={index}
-              className="py-8 flex flex-wrap md:flex-nowrap"
-            >
-              <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col px-6">
-                <span className="font-semibold title-font">{item.category}</span>
-                <span className="mt-1 text-gray-500 text-sm">{item.date}</span>
-              </div>
-              <div className="md:flex-grow px-6">
-                <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
-                  {item.title}
-                </h2>
-                <p className="leading-relaxed">{item.description}</p>
-                <Link
-                  href="#"
-                  className="text-[#633466] inline-flex items-center mt-4"
-                >
-                  Learn More
-                  <svg
-                    className="w-4 h-4 ml-2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
+{/* Blog Cards */}
+<div className="flex flex-col gap-20">
+  {blogs.slice(0, 2).map((blog) => (
+    <Link key={blog.slug} href={`/blog/${blog.slug}`} className="flex flex-col md:flex-row w-full border border-gray-300 rounded-lg shadow-lg overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-700">
+      {/* Left Side - Image */}
+      <div className="bg-[#633466] px-4 md:rounded-none flex items-center justify-center md:w-1/3 h-full flex-grow">
+        <Image
+          className="object-cover w-full h-full"
+          src="/Images/aboutus.png"
+          alt="Blog Image"
+          width={192}
+          height={384}
+        />
       </div>
+      {/* Right Side - Text */}
+      <div className="flex flex-col justify-between py-8 px-4 leading-normal bg-[#633466] w-full md:w-2/3 h-full">
+        <p className="mb-2 text-xl font-bold tracking-tight text-white">{blog.title}</p>
+        <p className="mb-10 text-sm font-normal text-white">{blog.description}</p>
+        <p className="text-xs text-white font-light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus repellendus sapiente veniam dolorem tenetur accusantium, sequi autem laboriosam, assumenda voluptate quidem quae ex eveniet eligendi nulla id, aut voluptates ratione?</p>
+        <p className="text-xs text-white text-right">{blog.date}</p>
+        <p className="text-xs text-light text-white text-right mt-3">{blog.date} Jan 3, 2034</p>
+      </div>
+    </Link>
+  ))}
+</div>
 
-      {/* See More Button at the bottom right */}
-      <Link
-        href="#"
-        className="absolute bottom-6 right-6 bg-[#633466] hover:bg-purple-600 text-white py-2 px-4 rounded-lg flex items-center space-x-2"
-        >
-        <span>See More</span>
-        <svg
-          className="w-4 h-4"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth="2"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M5 12h14"></path>
-          <path d="M12 5l7 7-7 7"></path>
-        </svg>
-      </Link>
-    </section>
+
+
+
+    {/* See More Button */}
+<div className="flex justify-end mt-12">
+  <Link href="/blogs" className="bg-[#633466] text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-all flex items-center">
+    See More
+    {/* Right Arrow Icon with margin */}
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="ml-2 h-5 w-5">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+    </svg>
+  </Link>
+</div>
+
+
+
+    </div>
   );
 }

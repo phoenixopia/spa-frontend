@@ -28,6 +28,7 @@ const BookingPage = () => {
     serviceId: "",
   });
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const router = useRouter();
 
   // Fetch services on mount
@@ -39,6 +40,7 @@ const BookingPage = () => {
         console.log(response)
       } catch (error) {
         console.error("Error fetching services:", error);
+        setErrorMessage("Failed to load services. Please try again later.");
       }
     };
 
@@ -54,14 +56,27 @@ const BookingPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMessage(null); // Reset error message before submitting
     try {
-      const response = await axios.post(`${URL}/booking`, formData);
-      console.log("Booking successful:", response.data);
-      alert("Your booking has been confirmed!");
-      router.push("/thankyou"); // Redirect to thank you page
+      // Ensure form data is valid
+      if (!formData.firstName || !formData.lastName || !formData.phoneNumber || !formData.date || !formData.time || !formData.serviceId) {
+        setErrorMessage("Please fill out all fields.");
+        setLoading(false);
+        return;
+      }
+
+      const response = await axios.post(`${URL}/booking/create`, formData);
+
+      if (response.status === 200) {
+        console.log("Booking successful:", response.data);
+        alert("Your booking has been confirmed!");
+        router.push("/thankyou"); // Redirect to thank you page
+      } else {
+        throw new Error("Booking failed");
+      }
     } catch (error) {
       console.error("Error submitting booking:", error);
-      alert("Failed to book. Please try again.");
+      setErrorMessage("Failed to book. Please try again.");
     }
     setLoading(false);
   };
@@ -156,6 +171,10 @@ const BookingPage = () => {
                 ))}
               </select>
             </div>
+
+            {errorMessage && (
+              <p className="text-red-500 text-sm mt-2">{errorMessage}</p>
+            )}
 
             <button 
               type="submit" 

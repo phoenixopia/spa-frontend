@@ -44,8 +44,8 @@ export default function Header() {
   return (
     <>
       {/* Fixed Header */}
-      <header className="fixed top-0 left-0 w-full bg-white z-50 shadow-md">
-        <div className="container mx-auto flex justify-between items-center p-5">
+      <header className="max-w-screen-3xl sticky top-0 z-50 w-full bg-white shadow-md">
+        <div className="container flex justify-between items-center p-5">
           {/* Logo */}
           <Link
             href="/"
@@ -105,7 +105,7 @@ export default function Header() {
 
 
       {/* Adjust padding to avoid overlap */} 
-      <div className="pt-30">
+      <div className="pt-13">
         {/* Your main content goes here */}
        </div> 
 

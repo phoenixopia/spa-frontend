@@ -7,7 +7,7 @@ const ContactUs = () => {
   const [value, setValue] = useState<number | undefined>(undefined);
 
   return (
-      <div className="w-80 bg-[#98439D] rounded-2xl shadow-lg mt-5 p-6 md:mt-8">
+      <div className="w-80 bg-[#98439D] rounded-2xl shadow-lg mt-4 p-6 md:mt-8">
                 <h2 className="text-xl font-bold text-center text-white mb-3">Share your experience</h2>
                 <p className="text-xl font-bold text-center text-white mb-3">How would you rate us?</p>
 

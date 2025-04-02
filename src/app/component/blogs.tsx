@@ -61,6 +61,7 @@ function Blogs() {
       <div className="bg-[#633466] px-4 md:rounded-none flex items-center justify-center md:w-1/3 flex-1 h-auto md:h-full">
         <Image
           className="object-cover w-full h-full"
+            // src={blog.image} // Use blog.image if available
           src="/Images/aboutus.png"
           alt="Blog Image"
           width={192}

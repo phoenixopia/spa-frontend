@@ -19,7 +19,8 @@ export default function SpaServices() {
     title: string;
     description: string;
     price: string;
-    image?: string;
+    category: string;
+    imageURL: string;
   }
 
   const [services, setServices] = useState<Service[]>([]); // Initialize as an empty array
@@ -28,7 +29,8 @@ export default function SpaServices() {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get<{ data: Service[] }>(`${URL}/blog`);
+        const response = await axios.get<{ data: Service[] }>(`${URL}/service`);
+        console.log("API URL:", `${URL}/blog\n\n`);
         console.log(response.data, "\n\n");
         
         if (Array.isArray(response.data.data)) {
@@ -37,7 +39,7 @@ export default function SpaServices() {
           console.error("Unexpected API response:", response.data);
         }
       } catch (error) {
-        console.error("Error fetching services:", error);
+        console.error("Error fetching blog:", error);
       } finally {
         setLoading(false);
       }
@@ -92,7 +94,7 @@ export default function SpaServices() {
                   <div>
                     <div className="mb-4">
                       <img
-                        src={service.image || "/Images/service.png"}
+                        src={service.imageURL}
                         alt={service.title}
                         className="w-full h-48 object-cover rounded-xl"
                       />
@@ -101,7 +103,7 @@ export default function SpaServices() {
                     <p className="text-gray-600 text-sm">{service.description}</p>
                     <p className="mt-3 text-gray-900 font-semibold text-lg">{service.price}</p>
                   </div>
-                  <Link href="/booking" legacyBehavior>
+                  <Link href="/servicedetail" legacyBehavior>
                     <motion.button
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}

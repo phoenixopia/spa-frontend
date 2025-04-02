@@ -10,6 +10,7 @@ interface Blog {
   description: string;
   category?: string;
   date: string;
+  imageURL?: string;
   slug: string;
 }
 
@@ -61,7 +62,7 @@ export default function BlogSection() {
       <div className="bg-[#633466] px-4 md:rounded-none flex items-center justify-center md:w-1/3 flex-1 h-auto md:h-full">
         <Image
           className="object-cover w-full h-full"
-          src="/Images/aboutus.png"
+          src={blog.imageURL || "/Images/default.png"} // Use blog.imageURL or fallback to a default image
           alt="Blog Image"
           width={192}
           height={0} // Remove fixed height
@@ -75,15 +76,10 @@ export default function BlogSection() {
           {blog.title}
         </p>
         <p className="mb-4 text-sm  font-normal text-white">{blog.description}</p>
-        <p className="text-xs text-white font-light">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi autem
-          laboriosam, assumenda voluptate quidem quae ex eveniet eligendi nulla
-          id, aut voluptates ratione? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Cupiditate, nihil.
-        </p>
+        
         <p className="text-xs text-white text-right">{blog.date}</p>
         <p className="text-xs text-light text-white text-right mt-3">
-          {blog.date} Jan 3, 2034
+          {blog.date}
         </p>
       </div>
     </div>

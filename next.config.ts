@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: ["images.app.goo.gl", 'drive.google.com'], // Allow external images from this domain
+  },
 };
 
 export default nextConfig;

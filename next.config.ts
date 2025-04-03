@@ -2,7 +2,16 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["images.app.goo.gl", 'drive.google.com'], // Allow external images from this domain
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.app.goo.gl",
+      },
+      {
+        protocol: "https",
+        hostname: "drive.google.com",
+      },
+    ],
   },
 };
 

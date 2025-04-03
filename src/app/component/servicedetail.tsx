@@ -1,70 +1,93 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
 
-export default function ProductTable() {
-  const products = [
-    { name: "Apple MacBook Pro 17\"", price: "$2999" },
-    { name: "Microsoft Surface Pro", price: "$1999" },
-    { name: "Magic Mouse 2", price: "$99" },
-    { name: "Google Pixel Phone", price: "$799" },
-    { name: "Apple Watch 5", price: "$999" },
-    { name: "Apple MacBook Pro 17\"", price: "$2999" },
-    { name: "Microsoft Surface Pro", price: "$1999" },
-    { name: "Magic Mouse 2", price: "$99" },
-    { name: "Google Pixel Phone", price: "$799" },
-    { name: "Apple Watch 5", price: "$999" },
-  ];
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import axios from "axios";
+
+const URL = process.env.NEXT_PUBLIC_APP_URL;
+
+interface Service {
+  id: string;
+  name: string;
+  price: string;
+}
+
+export default function Servicedetail() {
+  const params = useParams();
+  const id = params?.id as string; // Ensure `id` is treated as a string
+
+  console.log("\n\nExtracted id:", id);
+
+  const [services, setServices] = useState<Service[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!id) {
+      console.log("\n\nNo id found.");
+      return;
+    }
+
+    const fetchServicesByCategory = async () => {
+      try {
+        console.log(`Fetching from: ${URL}/service/search/category/${id}`);
+        const response = await axios.get<{ data: Service[] }>(`${URL}/service/search/category/${id}`);
+        
+        if (Array.isArray(response.data.data)) {
+          setServices(response.data.data);
+        } else {
+          console.error("Unexpected API response format:", response.data);
+        }
+      } catch (error) {
+        console.error("Error fetching category services:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServicesByCategory();
+  }, [id]);
 
   return (
     <div className="max-w-2xl mx-auto p-4">
-      <h2 className="text-lg font-semibold text-gray-900 dark:text-white text-center mb-4">
-        Service List
+      <h2 className="text-lg font-semibold text-gray-900 text-center mb-4">
+        Services in this Category
       </h2>
-      <div className="bg-white dark:bg-gray-900 shadow-md rounded-lg overflow-hidden py-4">
-        {/* Image with margin */}
-        <div className="flex justify-center mb-4">
-          <Image
-            src="/Images/mobile.jpeg"
-            alt="Product Showcase"
-            width={400}
-            height={400}
-            className="rounded-lg shadow-md"
-          />
-        </div>
 
-        <div className="relative overflow-x-auto">
-          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-              <tr>
-                <th scope="col" className="px-3 py-2">Product Name</th>
-                <th scope="col" className="px-3 py-2">Price</th>
-                <th scope="col" className="px-3 py-2 text-center">Book</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((product, index) => (
-                <tr
-                  key={index}
-                  className={`border-b dark:border-gray-700 border-gray-200 ${
-                    index % 2 === 0 ? "bg-white dark:bg-gray-900" : "bg-gray-50 dark:bg-gray-800"
-                  }`}
-                >
-                  <th scope="row" className="px-3 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {product.name}
-                  </th>
-                  <td className="px-3 py-2">{product.price}</td>
-                  <td className="px-3 py-2 text-center">
-                    <Link href="/booking">
-                      <button className="bg-[#633466] text-white px-4 py-2 rounded-lg shadow-md hover:bg-purple-700 transition">
-                        Book Now
-                      </button>
-                    </Link>
-                  </td>
+      <div className="bg-white shadow-md rounded-lg overflow-hidden py-4">
+        {loading ? (
+          <div className="flex justify-center items-center h-40">
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-600"></div>
+          </div>
+        ) : services.length === 0 ? (
+          <p className="text-center">No services found in this category.</p>
+        ) : (
+          <div className="relative overflow-x-auto">
+            <table className="w-full text-sm text-left text-gray-500">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                  <th scope="col" className="px-3 py-2">Service Name</th>
+                  <th scope="col" className="px-3 py-2">Price</th>
+                  <th scope="col" className="px-3 py-2 text-center">Book</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {services.map((service) => (
+                  <tr key={service.id} className="border-b border-gray-200">
+                    <td className="px-3 py-2 font-medium text-gray-900">
+                      {service.name}
+                    </td>
+                    <td className="px-3 py-2">{service.price}</td>
+                    <td className="px-3 py-2 text-center">
+                      <a href ="/booking"> <button className="bg-[#633466] text-white px-4 py-2 rounded-lg shadow-md hover:bg-purple-700 transition">
+                        Book Now
+                      </button> </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );

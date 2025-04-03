@@ -10,7 +10,7 @@ interface Blog {
   content: string;
   category?: string;
   publishedAt: string;
-  imageURL?: string;
+  imageURL: string;
   slug: string;
 }
 
@@ -69,7 +69,7 @@ export default function BlogSection() {
               <div className="bg-[#633466] px-4 md:rounded-none flex items-center justify-center md:w-1/3 flex-1 h-auto md:h-full">
                 <Image
                   className="object-cover w-full h-full"
-                  src={blog.imageURL || "/Images/default.png"}
+                  src={blog.imageURL }
                   alt="Blog Image"
                   width={192}
                   height={0}

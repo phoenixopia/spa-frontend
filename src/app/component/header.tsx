@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image"; // Import Image component for optimized images
+
 
 const MenuIcon = () => (
   <svg
@@ -47,12 +49,18 @@ export default function Header() {
       <header className="max-w-screen-3xl sticky top-0 z-50 w-full bg-white shadow-md">
         <div className="container flex justify-between items-center p-5">
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center text-gray-700 text-xl font-bold"
-          >
-            <span className="ml-1 text-[#633466]">Spa Haven</span>
-          </Link>
+
+<Link href="/" className="flex items-center text-gray-700 text-xl font-bold">
+  <Image
+    src="/Images/logo.png"  // Correct path to the logo image in the public directory
+    alt="Fana Logo"
+    width={40}  // Adjust width as needed
+    height={40}  // Adjust height as needed
+  />
+  <span className="ml-1 text-[#633466]">Fana</span>
+</Link>
+
+
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-1 text-[#717171]">

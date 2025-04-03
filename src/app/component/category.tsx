@@ -10,30 +10,30 @@ import "swiper/css/navigation";
 import { useRef, useState, useEffect } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import axios from "axios";
+
 const URL = process.env.NEXT_PUBLIC_APP_URL;
 
-export default function SpaServices() {
+export default function Categorylist() {
   const swiperRef = useRef<SwiperType | null>(null);
-  interface Service {
+
+  interface Category {
+    id: string;
     name: string;
     description: string;
-    price: string;
-    category: string;
     imageURL: string;
   }
 
-  const [services, setServices] = useState<Service[]>([]); 
+  const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchServices = async () => {
+    const fetchCategories = async () => {
       try {
-        const response = await axios.get<{ data: Service[] }>(`${URL}/service`);
-        console.log("API URL:", `${URL}/service\n\n`);
-        console.log(response.data, "\n\n");
-        
+        console.log("API URL:", `${URL}/category`);
+        const response = await axios.get<{ data: Category[] }>(`${URL}/category`);
+
         if (Array.isArray(response.data.data)) {
-          setServices(response.data.data);
+          setCategories(response.data.data);
         } else {
           console.error("Unexpected API response:", response.data);
         }
@@ -44,7 +44,7 @@ export default function SpaServices() {
       }
     };
 
-    fetchServices();
+    fetchCategories();
   }, []);
 
   return (
@@ -66,7 +66,7 @@ export default function SpaServices() {
           <div className="flex justify-center items-center h-40">
             <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-600"></div>
           </div>
-        ) : services.length === 0 ? (
+        ) : categories.length === 0 ? (
           <p className="text-center">No services available.</p>
         ) : (
           <Swiper
@@ -83,8 +83,8 @@ export default function SpaServices() {
             className="mySwiper"
             onSwiper={(swiper) => (swiperRef.current = swiper)}
           >
-            {services.map((service, index) => (
-              <SwiperSlide key={index}>
+            {categories.map((category, index) => (
+              <SwiperSlide key={category.id}>
                 <motion.div
                   className="service-item bg-white px-6 py-8 rounded-xl shadow-xl text-center h-full flex flex-col justify-between transition duration-300 transform hover:scale-105"
                   initial={{ opacity: 0, y: 30 }}
@@ -95,16 +95,15 @@ export default function SpaServices() {
                   <div>
                     <div className="mb-4">
                       <img
-                        src={service.imageURL}
-                        alt={service.name}
+                        src={category.imageURL} // Fallback image
+                        alt={category.name}
                         className="w-full h-48 object-cover rounded-xl"
                       />
                     </div>
-                    <h2 className="text-lg font-semibold text-gray-900">{service.name}</h2>
-                    <p className="text-gray-600 text-sm">{service.description}</p>
-                    <p className="mt-3 text-gray-900 font-semibold text-lg">{service.price}</p>
+                    <h2 className="text-lg font-semibold text-gray-900">{category.name}</h2>
+                    <p className="text-gray-600 text-sm">{category.description}</p>
                   </div>
-                  <Link href="/servicedetail" legacyBehavior>
+                  <Link href={`/servicedetail/${category.id}`} legacyBehavior>
                     <motion.button
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
@@ -117,15 +116,26 @@ export default function SpaServices() {
               </SwiperSlide>
             ))}
           </Swiper>
-          
         )}
       </div>
+
+      {/* Swiper Navigation Buttons */}
       <div className="absolute top-1/2 left-20 transform -translate-y-1/2 z-10">
-              <button onClick={() => swiperRef.current?.slidePrev()} className="bg-[#633466] text-white px-3 py-2 rounded-full shadow-lg">❮</button>
-            </div>
-            <div className="absolute top-1/2 right-20 transform -translate-y-1/2 z-10">
-              <button onClick={() => swiperRef.current?.slideNext()} className="bg-[#633466] text-white px-3 py-2 rounded-full shadow-lg">❯</button>
-            </div>
+        <button
+          onClick={() => swiperRef.current?.slidePrev()}
+          className="bg-[#633466] text-white px-3 py-2 rounded-full shadow-lg"
+        >
+          ❮
+        </button>
+      </div>
+      <div className="absolute top-1/2 right-20 transform -translate-y-1/2 z-10">
+        <button
+          onClick={() => swiperRef.current?.slideNext()}
+          className="bg-[#633466] text-white px-3 py-2 rounded-full shadow-lg"
+        >
+          ❯
+        </button>
+      </div>
     </section>
   );
 }

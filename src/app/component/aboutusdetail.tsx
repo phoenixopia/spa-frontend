@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Aboutusdetail from "../component/detail";
-import Services from "../component/services";
+import Services from "./category";
 import Blog from "../component/blog";
 import Footer from "../component/footer";
 import Testimonials from "../component/Testimonials";

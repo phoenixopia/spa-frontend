@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import Footer from "../component/footer";
@@ -29,6 +29,7 @@ const BookingPage = () => {
   });
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
   const router = useRouter();
 
   // Fetch services on mount
@@ -37,7 +38,7 @@ const BookingPage = () => {
       try {
         const response = await axios.get<{ data: Service[] }>(`${URL}/service`);
         setServices(response.data.data);
-        console.log(response)
+        console.log(response);
       } catch (error) {
         console.error("Error fetching services:", error);
         setErrorMessage("Failed to load services. Please try again later.");
@@ -52,25 +53,56 @@ const BookingPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Handle phone number input with validation
+  const handlePhoneNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const input = event.target.value;
+
+    // Validate: starts with 9 and up to 9 digits
+    const isValid = /^9\d{0,8}$/.test(input);
+
+    setFormData({ ...formData, phoneNumber: input });
+    setPhoneNumberError(!isValid);
+  };
+
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setErrorMessage(null); // Reset error message before submitting
+    setErrorMessage(null);
+
+    const { firstName, lastName, phoneNumber, date, time, serviceId } = formData;
+
+    if (!firstName || !lastName || !phoneNumber || !date || !time || !serviceId) {
+      setErrorMessage("Please fill out all fields.");
+      setLoading(false);
+      return;
+    }
+
+    if (phoneNumberError) {
+      setErrorMessage("Invalid phone number.");
+      setLoading(false);
+      return;
+    }
+
     try {
-      // Ensure form data is valid
-      if (!formData.firstName || !formData.lastName || !formData.phoneNumber || !formData.date || !formData.time || !formData.serviceId) {
-        setErrorMessage("Please fill out all fields.");
-        setLoading(false);
-        return;
-      }
+      const dateTime = new Date(`${date}T${time}`).toISOString();
 
-      const response = await axios.post(`${URL}/booking/create`, formData);
+      const payload = {
+        firstName,
+        lastName,
+        phoneNumber,
+        serviceId,
+        dateTime,
+      };
 
-      if (response.status === 200) {
-        console.log("Booking successful:", response.data);
+      console.log("\n\n payload\n", payload);
+
+      const response = await axios.post(`${URL}/booking/create`, payload);
+      console.log("Response:", response.status, response.data);
+
+      if (response.status === 201) {
         alert("Your booking has been confirmed!");
-        router.push("/thankyou"); // Redirect to thank you page
+        router.push("/thankyou");
       } else {
         throw new Error("Booking failed");
       }
@@ -78,17 +110,18 @@ const BookingPage = () => {
       console.error("Error submitting booking:", error);
       setErrorMessage("Failed to book. Please try again.");
     }
+
     setLoading(false);
   };
 
   return (
     <div>
       <h2 className="text-3xl font-extrabold text-center text-[#717171] mb-6">Reservation</h2>
-      
+
       <section className="flex items-center justify-center min-h-screen bg-brown-100 dark:bg-brown-900 px-6 md:px-8 py-8 md:py-12">
         <div className="max-w-lg w-full bg-[#633466] rounded-2xl shadow-lg p-6 md:p-8">
           <p className="text-center text-white mb-8">Book your reservation here</p>
-          
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-2 gap-4">
               <div>
@@ -119,15 +152,23 @@ const BookingPage = () => {
 
             <div>
               <label className="block text-sm font-medium text-white">Phone Number</label>
-              <input 
-                type="tel" 
-                name="phoneNumber"
-                value={formData.phoneNumber} 
-                onChange={handleChange} 
-                className="w-full p-3 rounded-lg shadow-sm bg-[#814589] text-white" 
-                placeholder="Enter your phone number" 
-                required 
-              />
+              <div className="flex items-center space-x-2">
+                <span className="text-white bg-[#814589] px-3 py-3 rounded-l-lg border border-gray-400">+251</span>
+                <input 
+                  type="tel" 
+                  name="phoneNumber"
+                  value={formData.phoneNumber} 
+                  onChange={handlePhoneNumberChange}
+                  pattern="9[0-9]{8}" 
+                  maxLength={9}
+                  className="w-full p-3 rounded-r-lg shadow-sm bg-[#814589] text-white border border-gray-400" 
+                  placeholder="9xxxxxxxx" 
+                  required 
+                />
+              </div>
+              {phoneNumberError && (
+                <p className="text-red-400 text-sm mt-1">Phone number must start with 9 and be 9 digits long.</p>
+              )}
             </div>
 
             <div>
@@ -166,7 +207,7 @@ const BookingPage = () => {
                 <option value="">Choose a Service</option>
                 {services.map((service) => (
                   <option key={service.id} value={service.id}>
-                    {service.name} 
+                    {service.name}
                   </option>
                 ))}
               </select>

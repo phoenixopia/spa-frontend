@@ -31,6 +31,8 @@ export default function Categorylist() {
       try {
         console.log("API URL:", `${URL}/category`);
         const response = await axios.get<{ data: Category[] }>(`${URL}/category`);
+        console.log("Fetched categories:", response.data.data);
+
 
         if (Array.isArray(response.data.data)) {
           setCategories(response.data.data);

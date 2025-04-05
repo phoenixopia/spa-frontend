@@ -12,9 +12,10 @@ const Aboutus: React.FC = () => {
           </h1>
 
           <p className="mb-8 text-[#717171] leading-relaxed max-w-xl text-left mx-auto">
-            Heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.
-          </p>
+          
+Fana Traditional Steam (Weyba Tis) is a premier beauty and body care company founded in 1995 EC by Fana G/Medhin, a passionate entrepreneur with a vision to enhance and celebrate natural beauty. Specializing in the traditional Ethiopian steam (Weyba Tis), we offer high-quality services and products that cater to women’s natural beauty and body care needs. 
 
+</p>
           {/* Button Link to About Us Detail Page */}
           <div className="flex justify-center w-full">
             <Link href="/aboutusdetail">

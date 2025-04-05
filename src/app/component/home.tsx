@@ -8,12 +8,11 @@ const Home: React.FC = () => {
     >
       <div className="absolute inset-0 bg-opacity-50"></div>
       <div className="relative text-center text-white px-4">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
-          Spa Experience
+        <h1 className="text-5xl font-cursive text-[#633466] md:text-6xl font-bold mb-6">
+        Fana Traditional Steam
         </h1>
-        <p className="max-w-2xl mx-auto font-light text-lg md:text-xl mb-8">
-          From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack.
-        </p>
+        <p className="max-w-2xl mx-auto font-[Dancing Script] font-light text-lg md:text-xl mb-8">
+        Experience the essence of Ethiopian beauty and self-care with Fana Traditional Steam where tradition meets luxury to celebrate your natural glow.        </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           
           <a

@@ -3,6 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Metal&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
 
 /* 2. Tailwind CSS imports */
 @import "tailwindcss";
@@ -20,7 +23,7 @@
 
 /* 3. Custom font class */
 .font-Italianno {
-  font-family: 'Italianno', cursive;
+  font-family: 'Italianno', "cursive", "Metal";
 }
 
 /* 4. CSS Variables */

@@ -10,6 +10,8 @@ import "swiper/css/navigation";
 import { useRef, useState, useEffect } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import axios from "axios";
+import Image from "next/image";
+
 const URL = process.env.NEXT_PUBLIC_APP_URL;
 
 interface Testimonial {
@@ -39,8 +41,8 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="text-gray-700 body-font py-16 bg-gray-100 relative">
-      <div className="container px-20 mx-auto">
+    <section className="text-gray-700 body-font py-16 bg-gray-100 relative overflow-x-hidden">
+      <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: -20 }}
@@ -57,7 +59,7 @@ export default function Testimonials() {
         ) : (
           <div className="relative">
             <Swiper
-              spaceBetween={2}
+              spaceBetween={-1}
               slidesPerView={1}
               breakpoints={{
                 640: { slidesPerView: 1 },
@@ -72,17 +74,19 @@ export default function Testimonials() {
               {testimonials.map((testimonial, index) => (
                 <SwiperSlide key={index}>
                   <motion.div
-                    className="bg-gray-100 h-96 py-8 rounded-xl text-center flex flex-col justify-between transition duration-300 transform hover:scale-105"
+                    className=" h-[400px] sm:h-[360px] md:h-[380px] lg:h-96 py-8 rounded-xl text-center flex flex-col justify-between transition duration-300 transform hover:scale-105"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     style={{ width: "100%", maxWidth: "380px", margin: "0 auto" }}
                   >
                     <div className="relative mb-4">
-                      <img
+                      <Image
                         src={testimonial.imageURL}
-                        alt={`${testimonial.firstName} ${testimonial.lastName}`}
                         className="w-full h-56 object-cover rounded-xl"
+                        width={500}
+                        height={500}
+                        alt={`${testimonial.firstName} ${testimonial.lastName}`}
                       />
                       <div className="absolute top-3/4 mx-5 bg-white bg-opacity-70 rounded-xl z-10 p-3">
                         <h3 className="text-lg font-semibold text-gray-900">
@@ -95,11 +99,21 @@ export default function Testimonials() {
                 </SwiperSlide>
               ))}
             </Swiper>
-            <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10">
-              <button onClick={() => swiperRef.current?.slidePrev()} className="bg-[#633466] text-white px-3 py-2 rounded-full shadow-lg">❮</button>
+<div className="absolute top-1/2 transform -translate-y-1/2 z-10 pl-8 md:pl-3 lg:pl-3 hidden lg:block">
+            <button
+                onClick={() => swiperRef.current?.slidePrev()}
+                className="bg-[#633466] text-white px-3 py-2 rounded-full shadow-lg"
+              >
+                ❮
+              </button>
             </div>
-            <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10">
-              <button onClick={() => swiperRef.current?.slideNext()} className="bg-[#633466] text-white px-3 py-2 rounded-full shadow-lg">❯</button>
+<div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 pr-8 md:pr-3 lg:pr-3 hidden md:block">
+              <button
+                onClick={() => swiperRef.current?.slideNext()}
+                className="bg-[#633466] text-white px-3 py-2 rounded-full shadow-lg"
+              >
+                ❯
+              </button>
             </div>
           </div>
         )}

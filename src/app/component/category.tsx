@@ -10,6 +10,8 @@ import "swiper/css/navigation";
 import { useRef, useState, useEffect } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import axios from "axios";
+import Image from "next/image";
+
 
 const URL = process.env.NEXT_PUBLIC_APP_URL;
 
@@ -50,8 +52,8 @@ export default function Categorylist() {
   }, []);
 
   return (
-    <section className="text-gray-700 body-font py-16 relative">
-      <div className="container px-20 mx-auto">
+    <section className="text-gray-700 body-font py-16 relative overflow-x-hidden">
+      <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: -20 }}
@@ -60,7 +62,7 @@ export default function Categorylist() {
         >
           <h1 className="text-3xl font-bold text-gray-800">Our Services</h1>
           <p className="mt-2 text-gray-800">
-            We have been working with some Fortune 500+ clients.
+            We have been working with some Fortune 1000+ clients.
           </p>
         </motion.div>
 
@@ -96,9 +98,10 @@ export default function Categorylist() {
                 >
                   <div>
                     <div className="mb-4">
-                      <img
+                      <Image
                         src={category.imageURL} // Fallback image
                         alt={category.name}
+                        width={500} height={500}
                         className="w-full h-48 object-cover rounded-xl"
                       />
                     </div>
@@ -122,16 +125,16 @@ export default function Categorylist() {
       </div>
 
       {/* Swiper Navigation Buttons */}
-      <div className="absolute top-1/2 left-20 transform -translate-y-1/2 z-10">
-        <button
+      <div className="absolute top-1/2 transform -translate-y-1/2 z-10 pl-8 md:pl-8 lg:pl-13 md:block hidden">
+      <button
           onClick={() => swiperRef.current?.slidePrev()}
           className="bg-[#633466] text-white px-3 py-2 rounded-full shadow-lg"
         >
           ❮
         </button>
       </div>
-      <div className="absolute top-1/2 right-20 transform -translate-y-1/2 z-10">
-        <button
+      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 pr-8 md:pr-8 lg:pr-13 md:block hidden">
+      <button
           onClick={() => swiperRef.current?.slideNext()}
           className="bg-[#633466] text-white px-3 py-2 rounded-full shadow-lg"
         >

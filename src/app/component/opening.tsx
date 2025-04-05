@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const Opening = () => {
   return (
-    <section className="text-gray-600 body-font relative">
+    <section className="text-gray-600 body-font relative overflow-x-hidden">
       <div className="container mx-10 lg:px-30 py-14 relative">
         <div className="lg:w-2/3 flex flex-col items-start ml-4">
           {/* Title */}

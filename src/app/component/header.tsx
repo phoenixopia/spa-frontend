@@ -57,7 +57,7 @@ export default function Header() {
     width={40}  // Adjust width as needed
     height={40}  // Adjust height as needed
   />
-  <span className="ml-1 text-[#633466]">Fana</span>
+  <span className="ml-1 text-[#633466] pl-3">Fana</span>
 </Link>
 
 

@@ -6,6 +6,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Metal&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+
+
 
 /* 2. Tailwind CSS imports */
 @import "tailwindcss";
@@ -23,7 +27,7 @@
 
 /* 3. Custom font class */
 .font-Italianno {
-  font-family: 'Italianno', "cursive", "Metal";
+font-family: 'Metal Mania', 'Italianno', 'Lora', 'Metal Mania', "cursive", "Metal";
 }
 
 /* 4. CSS Variables */
@@ -79,6 +83,6 @@ body::before {
   background-position: inherit;
   filter: blur(20px); /* Increased blur effect */
   z-index: -1; /* Keep behind content */
-  opacity: 0.95; /* Increased opacity for a more whitish effect */
+  opacity: 0.97; /* Increased opacity for a more whitish effect */
   background-color: rgba(255, 255, 255, 0.5); /* Whitish tint overlay */
 }

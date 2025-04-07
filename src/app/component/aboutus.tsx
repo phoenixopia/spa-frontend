@@ -13,7 +13,7 @@ const Aboutus: React.FC = () => {
 
           <p className="mb-8 text-[#717171] leading-relaxed max-w-xl text-left mx-auto">
           
-Fana Traditional Steam (Weyba Tis) is a premier beauty and body care company founded in 1995 EC by Fana G/Medhin, a passionate entrepreneur with a vision to enhance and celebrate natural beauty. Specializing in the traditional Ethiopian steam (Weyba Tis), we offer high-quality services and products that cater to women’s natural beauty and body care needs. 
+Fana Traditional Steam (Weyba Tis) is a premier beauty and body care company founded in 1995 EC (20 + years ) by Fana G/Medhin, a passionate entrepreneur with a vision to enhance and celebrate natural beauty. Specializing in the traditional Ethiopian steam (Weyba Tis), we offer high-quality services and products that cater to women’s natural beauty and body care needs. 
 
 </p>
           {/* Button Link to About Us Detail Page */}

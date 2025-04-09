@@ -54,7 +54,7 @@ export default function Testimonials() {
 
         {isLoading ? (
           <div className="flex justify-center items-center h-40">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-600"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-green-600"></div>
           </div>
         ) : (
           <div className="relative">
@@ -102,7 +102,7 @@ export default function Testimonials() {
 <div className="absolute top-1/2 transform -translate-y-1/2 z-10 pl-8 md:pl-3 lg:pl-3 hidden lg:block">
             <button
                 onClick={() => swiperRef.current?.slidePrev()}
-                className="bg-[#633466] text-white px-3 py-2 rounded-full shadow-lg"
+                className="bg-[#209747] text-white px-3 py-2 rounded-full shadow-lg"
               >
                 ❮
               </button>
@@ -110,7 +110,7 @@ export default function Testimonials() {
 <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 pr-8 md:pr-3 lg:pr-3 hidden md:block">
               <button
                 onClick={() => swiperRef.current?.slideNext()}
-                className="bg-[#633466] text-white px-3 py-2 rounded-full shadow-lg"
+                className="bg-[#209747] text-white px-3 py-2 rounded-full shadow-lg"
               >
                 ❯
               </button>

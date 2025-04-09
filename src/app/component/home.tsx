@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     >
       <div className="absolute inset-0 bg-opacity-50"></div>
       <div className="relative text-center text-white px-4" style={{ fontFamily: "'Metal Mania', cursive" }}>
-        <h1 className="text-6xl font-bold mb-6 text-[#633466]">
+        <h1 className="text-6xl font-bold mb-6 text-[#209747]">
           Fana Traditional Steam
         </h1>
         <p className="max-w-2xl mx-auto font-light md:text-3xl mb-8">
@@ -20,7 +20,7 @@ const Home: React.FC = () => {
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <a
             href="/booking"
-            className="px-6 py-3 text-lg font-medium bg-[#633466] text-white rounded-lg hover:bg-purple-600 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+            className="px-6 py-3 text-lg font-medium bg-[#209747] text-white rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
           >
             Book Now
           </a>

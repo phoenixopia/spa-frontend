@@ -119,7 +119,7 @@ const BookingPage = () => {
       <h2 className="text-3xl font-extrabold text-center text-[#717171] mb-6">Reservation</h2>
 
       <section className="flex items-center justify-center min-h-screen bg-brown-100 dark:bg-brown-900 px-6 md:px-8 py-8 md:py-12">
-        <div className="max-w-lg w-full bg-[#633466] rounded-2xl shadow-lg p-6 md:p-8">
+        <div className="max-w-lg w-full bg-green-900 rounded-2xl shadow-lg p-6 md:p-8">
           <p className="text-center text-white mb-8">Book your reservation here</p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -131,7 +131,7 @@ const BookingPage = () => {
                   name="firstName"
                   value={formData.firstName} 
                   onChange={handleChange} 
-                  className="w-full p-3 rounded-lg shadow-sm bg-[#814589] text-white" 
+                  className="w-full p-3 rounded-lg shadow-sm bg-[#209747] text-white" 
                   placeholder="First Name" 
                   required 
                 />
@@ -143,7 +143,7 @@ const BookingPage = () => {
                   name="lastName"
                   value={formData.lastName} 
                   onChange={handleChange} 
-                  className="w-full p-3 rounded-lg shadow-sm bg-[#814589] text-white" 
+                  className="w-full p-3 rounded-lg shadow-sm bg-[#209747] text-white" 
                   placeholder="Last Name" 
                   required 
                 />
@@ -153,7 +153,7 @@ const BookingPage = () => {
             <div>
               <label className="block text-sm font-medium text-white">Phone Number</label>
               <div className="flex items-center space-x-2">
-                <span className="text-white bg-[#814589] px-3 py-3 rounded-l-lg border border-gray-400">+251</span>
+                <span className="text-white bg-[#209747] px-3 py-3 rounded-l-lg border border-gray-400">+251</span>
                 <input 
                   type="tel" 
                   name="phoneNumber"
@@ -161,7 +161,7 @@ const BookingPage = () => {
                   onChange={handlePhoneNumberChange}
                   pattern="9[0-9]{8}" 
                   maxLength={9}
-                  className="w-full p-3 rounded-r-lg shadow-sm bg-[#814589] text-white border border-gray-400" 
+                  className="w-full p-3 rounded-r-lg shadow-sm bg-[#209747] text-white border border-gray-400" 
                   placeholder="9xxxxxxxx" 
                   required 
                 />
@@ -178,7 +178,7 @@ const BookingPage = () => {
                 name="date"
                 value={formData.date} 
                 onChange={handleChange} 
-                className="w-full p-3 rounded-lg shadow-sm bg-[#814589] text-white" 
+                className="w-full p-3 rounded-lg shadow-sm bg-[#209747] text-white" 
                 required 
               />
             </div>
@@ -190,7 +190,7 @@ const BookingPage = () => {
                 name="time"
                 value={formData.time} 
                 onChange={handleChange} 
-                className="w-full p-3 rounded-lg shadow-sm bg-[#814589] text-white" 
+                className="w-full p-3 rounded-lg shadow-sm bg-[#209747] text-white" 
                 required 
               />
             </div>
@@ -201,7 +201,7 @@ const BookingPage = () => {
                 name="serviceId"
                 value={formData.serviceId} 
                 onChange={handleChange} 
-                className="w-full p-3 rounded-lg shadow-sm bg-[#814589] text-white" 
+                className="w-full p-3 rounded-lg shadow-sm bg-[#209747] text-white" 
                 required
               >
                 <option value="">Choose a Service</option>
@@ -219,7 +219,7 @@ const BookingPage = () => {
 
             <button 
               type="submit" 
-              className="w-full py-3 text-white font-medium bg-[#9C26A3] rounded-lg hover:bg-purple-600"
+              className="w-full py-3 text-white font-medium bg-green-700 rounded-lg hover:bg-green-600"
               disabled={loading}
             >
               {loading ? "Booking..." : "Book Now"}

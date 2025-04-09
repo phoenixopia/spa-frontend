@@ -66,7 +66,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="w-80 bg-[#98439D] rounded-2xl shadow-lg mt-4 p-6 md:mt-8">
+    <div className="w-80 bg-green-900 rounded-2xl shadow-lg mt-4 p-6 md:mt-8">
       <h2 className="text-xl font-bold text-center text-white mb-3">
         Share your experience
       </h2>
@@ -83,7 +83,7 @@ const ContactUs = () => {
             onMouseEnter={() => setHovered(star)}
             onMouseLeave={() => setHovered(null)}
             className={`w-6 h-6 mx-1 cursor-pointer transition-colors duration-200 ${
-              star <= (hovered ?? rating) ? "text-[#FF7DF6]" : "text-gray-300"
+              star <= (hovered ?? rating) ? "text-green-400" : "text-gray-300"
             }`}
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -101,7 +101,7 @@ const ContactUs = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             onBlur={handleEmailBlur}
-            className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500"
+            className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
             placeholder="Email"
             required
           />
@@ -109,7 +109,7 @@ const ContactUs = () => {
             type="text"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500"
+            className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
             placeholder="Subject"
             required
           />
@@ -117,13 +117,13 @@ const ContactUs = () => {
             rows={3}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500"
+            className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
             placeholder="Message"
             required
           />
           <button
             type="submit"
-            className="w-full py-2 text-white font-medium bg-[#FF7DF6] rounded-md hover:bg-purple-600 focus:ring-4 focus:ring-purple-300"
+            className="w-full py-2 text-white font-medium bg-green-400 rounded-md hover:bg-green-600 focus:ring-4 focus:ring-green-300"
           >
             Send Message
           </button>

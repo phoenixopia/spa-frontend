@@ -68,7 +68,7 @@ export default function Categorylist() {
 
         {loading ? (
           <div className="flex justify-center items-center h-40">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-600"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-green-600"></div>
           </div>
         ) : categories.length === 0 ? (
           <p className="text-center">No services available.</p>
@@ -112,7 +112,7 @@ export default function Categorylist() {
                     <motion.button
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="mt-4 bg-white text-[#633466] border-2 hover:bg-purple-600 border-[#633466] font-semibold py-3 px-6 rounded-lg transition duration-300"
+                      className="mt-4 bg-white text-[#209747] border-2 hover:bg-green-600 border-[#209747] font-semibold py-3 px-6 rounded-lg transition duration-300"
                     >
                       Details
                     </motion.button>
@@ -128,7 +128,7 @@ export default function Categorylist() {
       <div className="absolute top-1/2 transform -translate-y-1/2 z-10 pl-8 md:pl-8 lg:pl-13 md:block hidden">
       <button
           onClick={() => swiperRef.current?.slidePrev()}
-          className="bg-[#633466] text-white px-3 py-2 rounded-full shadow-lg"
+          className="bg-[#209747] text-white px-3 py-2 rounded-full shadow-lg"
         >
           ❮
         </button>
@@ -136,7 +136,7 @@ export default function Categorylist() {
       <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 pr-8 md:pr-8 lg:pr-13 md:block hidden">
       <button
           onClick={() => swiperRef.current?.slideNext()}
-          className="bg-[#633466] text-white px-3 py-2 rounded-full shadow-lg"
+          className="bg-[#209747] text-white px-3 py-2 rounded-full shadow-lg"
         >
           ❯
         </button>

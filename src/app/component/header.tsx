@@ -57,7 +57,7 @@ export default function Header() {
     width={40}  // Adjust width as needed
     height={40}  // Adjust height as needed
   />
-  <span className="ml-1 text-[#633466] pl-3">Fana</span>
+  <span className="ml-1 text-[#209747] pl-3">Fana</span>
 </Link>
 
 
@@ -68,7 +68,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.path}
-                className="px-4 py-2 rounded-lg transition hover:bg-[#633466] hover:text-white"
+                className="px-4 py-2 rounded-lg transition hover:bg-[#209747] hover:text-white"
               >
                 {item.name}
               </Link>
@@ -76,7 +76,7 @@ export default function Header() {
             {/* Booking Link */}
             <Link
               href="/booking"
-              className="px-6 py-2 bg-[#633466] text-white font-semibold rounded-lg hover:bg-[#633466] transition"
+              className="px-6 py-2 bg-[#209747] text-white font-semibold rounded-lg hover:bg-[#209747] transition"
             >
               Booking
             </Link>
@@ -95,7 +95,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.path}
-                className="w-full text-center py-3 px-6 rounded-lg transition hover:bg-[#633466] hover:text-white"
+                className="w-full text-center py-3 px-6 rounded-lg transition hover:bg-[#209747] hover:text-white"
               >
                 {item.name}
               </Link>
@@ -103,7 +103,7 @@ export default function Header() {
             {/* Booking Link for Mobile */}
             <Link
               href="/booking"
-              className="w-full text-center py-3 px-6 bg-[#633466] text-white font-semibold rounded-lg shadow-md hover:bg-purple-600 transition"
+              className="w-full text-center py-3 px-6 bg-[#209747] text-white font-semibold rounded-lg shadow-md hover:bg-green-600 transition"
             >
               Booking
             </Link>

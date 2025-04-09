@@ -78,7 +78,7 @@ export default function Servicedetail() {
                     </td>
                     <td className="px-3 py-2">{service.price}</td>
                     <td className="px-3 py-2 text-center">
-                      <a href ="/booking"> <button className="bg-[#633466] text-white px-4 py-2 rounded-lg shadow-md hover:bg-purple-700 transition">
+                      <a href ="/booking"> <button className="bg-[#209747] text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-700 transition">
                         Book Now
                       </button> </a>
                     </td>

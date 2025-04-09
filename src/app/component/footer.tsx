@@ -6,7 +6,7 @@ import ContactUs from './contactus';
 const Footer = () => {
   return (
     
-    <footer className="bg-[#633466] text-white py-2">
+    <footer className="bg-[#209747] text-white py-2">
       
       <div className="max-w-7xl mx-auto mb-4 px-6 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-center">

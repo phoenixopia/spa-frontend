@@ -1,0 +1,88 @@
+/* 1. Import the font first */
+/* In globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Metal&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+
+
+
+/* 2. Tailwind CSS imports */
+@import "tailwindcss";
+
+/* Custom Rating Colors */
+.rating svg {
+  color: #EB72E6; /* Change rated stars color */
+}
+
+.rating .unrated {
+  color: #d1d5db; /* Default Tailwind gray-300 */
+}
+
+
+
+/* 3. Custom font class */
+.font-Italianno {
+font-family: 'Metal Mania', 'Italianno', 'Lora', 'Metal Mania', "cursive", "Metal";
+}
+
+/* 4. CSS Variables */
+:root {
+  --background: white;
+  --foreground: #171717;
+  --primary-color: #D1B29F;
+  --secondary-color: #03DAC6;
+}
+
+
+
+/* 5. Tailwind theme configuration (if needed) */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* 6. Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+
+body {
+  position: relative;
+  background-image: url('/images/back.jpeg') !important;
+  background-repeat: repeat !important; /* Duplicates the image */
+  background-size: auto !important; /* Keeps the original size */
+  background-position: top left !important; /* Aligns the image */
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+
+
+}
+
+/* Stronger Blur + Whitish Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: inherit; /* Inherit background image */
+  background-repeat: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  filter: blur(20px); /* Increased blur effect */
+  z-index: -1; /* Keep behind content */
+  opacity: 0.97; /* Increased opacity for a more whitish effect */
+  background-color: rgba(255, 255, 255, 0.5); /* Whitish tint overlay */
+}

@@ -10,16 +10,16 @@ const Opening = () => {
       <div className="container mx-10 lg:px-30 py-14 relative">
         <div className="lg:w-2/3 flex flex-col items-start ml-4">
           {/* Title */}
-          <h1 className="font-Italianno text-[#209747] text-6xl font-extrabold mb-10 w-full">
+          <h1 className="font-Italianno text-[#209747] text-5xl font-extrabold mb-10 w-full">
             Opening Hours
           </h1>
 
           {/* Time details */}
           <div className="w-full mb-6">
-            <h2 className="text-[#209747] font-Italianno text-4xl font-bold mb-2 w-full">
+            <h2 className="text-[#209747] font-Italianno text-3xl font-bold mb-2 w-full">
               Monday to Sunday
             </h2>
-            <h2 className="text-[#209747] font-Italianno text-4xl font-bold w-full">
+            <h2 className="text-[#209747] font-Italianno text-3xl font-bold w-full">
               from 8:00 AM to 8:30 PM
             </h2>
           </div>

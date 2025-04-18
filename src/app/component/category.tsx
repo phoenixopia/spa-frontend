@@ -125,7 +125,7 @@ export default function Categorylist() {
       </div>
 
       {/* Swiper Navigation Buttons */}
-      <div className="absolute top-1/2 transform -translate-y-1/2 z-10 pl-8 md:pl-8 lg:pl-13 md:block hidden">
+      <div className="absolute top-1/2 transform -translate-y-1/2 z-10 pl-8 lg:pl-13 hidden lg:block">
       <button
           onClick={() => swiperRef.current?.slidePrev()}
           className="bg-[#209747] text-white px-3 py-2 rounded-full shadow-lg"
@@ -133,7 +133,7 @@ export default function Categorylist() {
           ❮
         </button>
       </div>
-      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 pr-8 md:pr-8 lg:pr-13 md:block hidden">
+      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 pr-8 lg:pr-13 hidden lg:block">
       <button
           onClick={() => swiperRef.current?.slideNext()}
           className="bg-[#209747] text-white px-3 py-2 rounded-full shadow-lg"

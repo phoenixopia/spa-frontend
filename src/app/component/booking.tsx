@@ -95,13 +95,11 @@ const BookingPage = () => {
         dateTime,
       };
 
-      console.log("\n\n payload\n", payload);
 
       const response = await axios.post(`${URL}/booking/create`, payload);
       console.log("Response:", response.status, response.data);
 
       if (response.status === 201) {
-        alert("Your booking has been confirmed!");
         router.push("/thankyou");
       } else {
         throw new Error("Booking failed");

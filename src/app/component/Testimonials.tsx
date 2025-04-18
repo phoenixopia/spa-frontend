@@ -59,11 +59,11 @@ export default function Testimonials() {
         ) : (
           <div className="relative">
             <Swiper
-              spaceBetween={-1}
+              spaceBetween={3}
               slidesPerView={1}
               breakpoints={{
                 640: { slidesPerView: 1 },
-                768: { slidesPerView: 2 },
+                913: { slidesPerView: 2 },
                 1030: { slidesPerView: 3 },
               }}
               autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -99,22 +99,27 @@ export default function Testimonials() {
                 </SwiperSlide>
               ))}
             </Swiper>
-<div className="absolute top-1/2 transform -translate-y-1/2 z-10 pl-8 md:pl-3 lg:pl-3 hidden lg:block">
-            <button
-                onClick={() => swiperRef.current?.slidePrev()}
-                className="bg-[#209747] text-white px-3 py-2 rounded-full shadow-lg"
-              >
-                ❮
-              </button>
-            </div>
-<div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 pr-8 md:pr-3 lg:pr-3 hidden md:block">
-              <button
-                onClick={() => swiperRef.current?.slideNext()}
-                className="bg-[#209747] text-white px-3 py-2 rounded-full shadow-lg"
-              >
-                ❯
-              </button>
-            </div>
+            {/* {testimonials.length >= 2 && (
+  <>
+    <div className="absolute top-1/2 transform -translate-y-1/2 z-10 pl-8 hidden lg:block">
+      <button
+        onClick={() => swiperRef.current?.slidePrev()}
+        className="bg-[#209747] text-white px-3 py-2 rounded-full shadow-lg"
+      >
+        ❮
+      </button>
+    </div>
+    <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 pr-8 hidden lg:block">
+      <button
+        onClick={() => swiperRef.current?.slideNext()}
+        className="bg-[#209747] text-white px-3 py-2 rounded-full shadow-lg"
+      >
+        ❯
+      </button>
+    </div>
+  </>
+)} */}
+
           </div>
         )}
       </div>

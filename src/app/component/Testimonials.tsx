@@ -66,6 +66,7 @@ export default function Testimonials() {
                 913: { slidesPerView: 2 },
                 1030: { slidesPerView: 3 },
               }}
+              
               autoplay={{ delay: 3000, disableOnInteraction: false }}
               modules={[Pagination, Navigation, Autoplay]}
               className="mySwiper"

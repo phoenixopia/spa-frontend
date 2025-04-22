@@ -59,7 +59,6 @@ font-family: 'Metal Mania', 'Italianno', 'Lora', 'Metal Mania', "cursive", "Meta
 
 body {
   position: relative;
-  background-image: url('/images/back.jpeg') !important;
   background-repeat: repeat !important; /* Duplicates the image */
   background-size: auto !important; /* Keeps the original size */
   background-position: top left !important; /* Aligns the image */

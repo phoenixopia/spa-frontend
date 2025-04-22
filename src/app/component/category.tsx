@@ -121,6 +121,8 @@ export default function Categorylist() {
               </SwiperSlide>
             ))}
           </Swiper>
+
+          
         )}
       </div>
 

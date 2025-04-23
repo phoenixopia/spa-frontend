@@ -56,7 +56,7 @@ export default function Servicedetail() {
       <div className="bg-white shadow-md rounded-lg overflow-hidden py-4">
         {loading ? (
           <div className="flex justify-center items-center h-40">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-600"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-green-600"></div>
           </div>
         ) : services.length === 0 ? (
           <p className="text-center">No services found in this category.</p>

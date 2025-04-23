@@ -19,7 +19,7 @@ Fana Traditional Steam (Weyba Tis) is a premier beauty and body care company fou
           {/* Button Link to About Us Detail Page */}
           <div className="flex justify-center w-full">
             <Link href="/aboutusdetail">
-                <div className="inline-flex items-center text-white bg-[#209747] hover:bg-purple-600 mt-8 px-6 py-3 border-2 border-[#633466] rounded-lg text-lg cursor-pointer transition-colors duration-300">
+                <div className="inline-flex items-center text-white bg-[#209747] hover:bg-green-600 mt-8 px-6 py-3 border-2 border-[#209747] rounded-lg text-lg cursor-pointer transition-colors duration-300">
                 Read More
               </div>
             </Link>

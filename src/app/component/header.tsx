@@ -113,7 +113,7 @@ export default function Header() {
 
 
       {/* Adjust padding to avoid overlap */} 
-      <div className="pt-30">
+      <div className="mt-20 p-0">
         {/* Your main content goes here */}
        </div> 
 

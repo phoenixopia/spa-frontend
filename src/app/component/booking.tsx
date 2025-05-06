@@ -15,10 +15,21 @@ interface Service {
   price: string;
   category: string;
   imageURL?: string;
+  branch: string;
 }
 
+interface Branch {
+  id: string;
+  name: string;
+  email: string;
+  phoneNumber: string;
+  address: string;
+  imageURL: string;
+  status: string;
+}
 const BookingPage = () => {
   const [services, setServices] = useState<Service[]>([]);
+  const [branches, setBranches] = useState<Branch[]>([]);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -26,6 +37,7 @@ const BookingPage = () => {
     date: "",
     time: "",
     serviceId: "",
+    branchId: "",
   });
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -37,7 +49,8 @@ const BookingPage = () => {
     const fetchServices = async () => {
       try {
         const response = await axios.get<{ data: Service[] }>(`${URL}/service`);
-        setServices(response.data.data);
+        setServices(response.data.data,);
+        console.log("Fetched services:", response.data.data);
         console.log(response);
       } catch (error) {
         console.error("Error fetching services:", error);
@@ -46,6 +59,22 @@ const BookingPage = () => {
     };
 
     fetchServices();
+  }, []);
+
+  // Fetch branches on mount
+  useEffect(() => {
+    const fetchBranches = async () => {
+      try {
+        const response = await axios.get<{ data: Branch[] }>(`${URL}/branch`);
+        setBranches(response.data.data);
+        console.log(response);
+      } catch (error) {
+        console.error("Error fetching branches:", error);
+        setErrorMessage("Failed to load branches. Please try again later.");
+      }
+    };
+
+    fetchBranches();
   }, []);
 
   // Handle input changes
@@ -70,9 +99,9 @@ const BookingPage = () => {
     setLoading(true);
     setErrorMessage(null);
 
-    const { firstName, lastName, phoneNumber, date, time, serviceId } = formData;
+    const { firstName, lastName, phoneNumber, date, time, serviceId, branchId } = formData;
 
-    if (!firstName || !lastName || !phoneNumber || !date || !time || !serviceId) {
+    if (!firstName || !lastName || !phoneNumber || !date || !time || !serviceId || !branchId) { 
       setErrorMessage("Please fill out all fields.");
       setLoading(false);
       return;
@@ -93,6 +122,7 @@ const BookingPage = () => {
         phoneNumber,
         serviceId,
         dateTime,
+        branchId,
       };
 
 
@@ -192,6 +222,26 @@ const BookingPage = () => {
                 required 
               />
             </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-white">Select Branch</label>
+              <select 
+                name="branchId"
+                value={formData.branchId} 
+                onChange={handleChange} 
+                className="w-full p-3 rounded-lg shadow-sm bg-[#209747] text-white" 
+                required
+              >
+                <option value="">Choose a Branch</option>
+                {branches.map((branch) => (
+                  <option key={branch.id} value={branch.id}>
+                    {branch.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+
 
             <div>
               <label className="block text-sm font-medium text-white">Select Service</label>

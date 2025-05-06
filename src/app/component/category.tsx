@@ -31,8 +31,8 @@ export default function Categorylist() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        console.log("API URL:", `${URL}/category`);
-        const response = await axios.get<{ data: Category[] }>(`${URL}/category`);
+        console.log("API URL:", `${URL}/service`);
+        const response = await axios.get<{ data: Category[] }>(`${URL}/service`);
         console.log("Fetched categories:", response.data.data);
 
 

@@ -6,7 +6,7 @@ const Home: React.FC = () => {
   return (
     <section
       className="relative w-full h-screen flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: "url('Images/background.png')" }}
+      style={{ backgroundImage: "url('Images/background.jpg')" }}
     >
       <div className="absolute inset-0 bg-opacity-50"></div>
       <div className="relative text-center text-white px-4" style={{ fontFamily: "'Metal Mania', cursive" }}>

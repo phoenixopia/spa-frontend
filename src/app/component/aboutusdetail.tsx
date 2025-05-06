@@ -36,7 +36,7 @@ At Fana Traditional Steam, we believe in empowering women to embrace their natur
 
         {/* Image Content */}
         <div className="lg:w-1/3 md:w-1/3 w-full flex justify-end">
-          <img className="object-cover object-center rounded-2xl w-full h-auto" alt="hero" src="Images/aboutus.png" />
+          <img className="object-cover object-center rounded-2xl w-full h-auto" alt="hero" src="Images/background.jpg" />
         </div>
       </div>
     </section>

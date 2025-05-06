@@ -28,7 +28,7 @@ Fana Traditional Steam (Weyba Tis) is a premier beauty and body care company fou
 
         {/* Image Content */}
         <div className="lg:w-1/3 md:w-1/3 w-full flex justify-end">
-          <img className="object-cover object-center rounded-2xl w-full h-auto" alt="hero" src="Images/aboutus.png" />
+          <img className="object-cover object-center rounded-2xl w-full h-auto" alt="hero" src="Images/ab.jpg" />
         </div>
       </div>
     </section>

@@ -3,91 +3,160 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import axios from "axios";
+import Image from "next/image";
 
 const URL = process.env.NEXT_PUBLIC_APP_URL;
+
+interface Branch {
+  id: string;
+  name: string;
+  address: string;
+  phoneNumber: string | null;
+  email: string | null;
+  imageURL: string | null;
+  status: string;
+}
 
 interface Service {
   id: string;
   name: string;
+  description: string;
   price: string;
+  discount: string;
+  duration: number;
+  status: string;
+  imageURL: string;
+  branches: Branch[];
 }
 
 export default function Servicedetail() {
   const params = useParams();
-  const id = params?.id as string; // Ensure `id` is treated as a string
+  const id = params?.id as string;
 
-  console.log("\n\nExtracted id:", id);
-
-  const [services, setServices] = useState<Service[]>([]);
+  const [service, setService] = useState<Service | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!id) {
-      console.log("\n\nNo id found.");
+      setError("No service ID provided");
+      setLoading(false);
       return;
     }
 
-    const fetchServicesByCategory = async () => {
+    const fetchService = async () => {
       try {
-        console.log(`Fetching from: ${URL}/service/search/category/${id}`);
-        const response = await axios.get<{ data: Service[] }>(`${URL}/service/search/category/${id}`);
+        const response = await axios.get<{ data: Service }>(`${URL}/service/${id}`);
         
-        if (Array.isArray(response.data.data)) {
-          setServices(response.data.data);
+        if (response.data?.data) {
+          setService(response.data.data);
         } else {
-          console.error("Unexpected API response format:", response.data);
+          setError("No service data received");
         }
-      } catch (error) {
-        console.error("Error fetching category services:", error);
+      } catch (err) {
+        console.error("Error fetching service:", err);
+        setError("Failed to load service. Please try again later.");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchServicesByCategory();
+    fetchService();
   }, [id]);
+
+  if (error) {
+    return (
+      <div className="max-w-2xl mx-auto p-4">
+        <div className="bg-white shadow-md rounded-lg p-6 text-center text-red-500">
+          {error}
+        </div>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className="max-w-2xl mx-auto p-4">
+        <div className="flex justify-center items-center h-40">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-green-600"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!service) {
+    return (
+      <div className="max-w-2xl mx-auto p-4">
+        <div className="bg-white shadow-md rounded-lg p-6 text-center">
+          Service not found
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-2xl mx-auto p-4">
-      <h2 className="text-lg font-semibold text-gray-900 text-center mb-4">
-        Services in this Category
+      <h2 className="text-2xl font-semibold text-gray-900 text-center mb-6">
+        {service.name}
       </h2>
 
-      <div className="bg-white shadow-md rounded-lg overflow-hidden py-4">
-        {loading ? (
-          <div className="flex justify-center items-center h-40">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-green-600"></div>
+      <div className="bg-white shadow-md rounded-lg overflow-hidden">
+        {/* Service Image */}
+        <div className="relative h-64 w-full">
+          <Image
+            src={service.imageURL}
+            alt={service.name}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
+
+        <div className="p-6">
+          {/* Service Details */}
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-2">Description</h3>
+            <p className="text-gray-600">{service.description}</p>
           </div>
-        ) : services.length === 0 ? (
-          <p className="text-center">No services found in this category.</p>
-        ) : (
-          <div className="relative overflow-x-auto">
-            <table className="w-full text-sm text-left text-gray-500">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-                <tr>
-                  <th scope="col" className="px-3 py-2">Service Name</th>
-                  <th scope="col" className="px-3 py-2">Price</th>
-                  <th scope="col" className="px-3 py-2 text-center">Book</th>
-                </tr>
-              </thead>
-              <tbody>
-                {services.map((service) => (
-                  <tr key={service.id} className="border-b border-gray-200">
-                    <td className="px-3 py-2 font-medium text-gray-900">
-                      {service.name}
-                    </td>
-                    <td className="px-3 py-2">{service.price}</td>
-                    <td className="px-3 py-2 text-center">
-                      <a href ="/booking"> <button className="bg-[#209747] text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-700 transition">
-                        Book Now
-                      </button> </a>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+
+          {/* Pricing Information */}
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-2">Pricing</h3>
+            <div className="flex items-center gap-4">
+              <span className="font-bold text-2xl">${service.price}</span>
+              {service.discount && (
+                <span className="text-green-600">
+                  {service.discount}% discount
+                </span>
+              )}
+            </div>
+            <p className="text-gray-500 mt-1">
+              Duration: {service.duration} minutes
+            </p>
           </div>
-        )}
+
+          {/* Branches */}
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-2">Available at</h3>
+            <div className="grid gap-4">
+              {service.branches.map((branch) => (
+                <div key={branch.id} className="border-b border-gray-200 pb-4 last:border-b-0">
+                  <h4 className="font-medium">{branch.name}</h4>
+                  <p className="text-gray-600">{branch.address}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Booking Button */}
+          <div className="mt-6 text-center">
+            <a href="/booking">
+              <button className="bg-[#209747] text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition w-full max-w-xs">
+                Book Now
+              </button>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -98,13 +98,14 @@ export default function Categorylist() {
                 >
                   <div>
                     <div className="mb-4">
-                      <Image
-                        src={category.imageURL}
-                        alt={category.name}
-                        width={500}
-                        height={500}
-                        className="w-full h-48 object-cover rounded-xl"
-                      />
+                    <Image
+  src={category.imageURL || "/Images/ab.jpg"} // <-- notice the leading slash
+  alt={category.name}
+  width={500}
+  height={500}
+  className="w-full h-48 object-cover rounded-xl"
+/>
+
                     </div>
                     <h2 className="text-lg font-semibold text-gray-900">{category.name}</h2>
                     <p className="text-gray-600 text-sm">{category.description}</p>

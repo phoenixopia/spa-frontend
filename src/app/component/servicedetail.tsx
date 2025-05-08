@@ -104,7 +104,7 @@ export default function Servicedetail() {
         {/* Service Image */}
         <div className="relative h-64 w-full">
           <Image
-            src={service.imageURL}
+            src={service.imageURL || "/Images/ab.jpg"}
             alt={service.name}
             fill
             className="object-cover"

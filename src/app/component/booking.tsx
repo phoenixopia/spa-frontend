@@ -144,7 +144,7 @@ const BookingPage = () => {
 
   return (
     <div>
-      <h2 className="text-3xl font-extrabold text-center text-[#717171] mb-6">Reservation</h2>
+      <h2 className="text-3xl font-extrabold text-center text-[#717171]   mb-6">Reservation</h2>
 
       <section className="flex items-center justify-center min-h-screen bg-brown-100 dark:bg-brown-900 px-6 md:px-8 py-8 md:py-12">
         <div className="max-w-lg w-full bg-green-900 rounded-2xl shadow-lg p-6 md:p-8">

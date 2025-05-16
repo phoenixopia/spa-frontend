@@ -48,7 +48,7 @@ export default function Header() {
       {/* Fixed Header */}
       <header className="fixed top-0 h-[5rem] left-0 right-0 z-50 w-full bg-white shadow-md">
       <div className="container flex justify-between items-center p-5">
-          {/* Logo */}
+          {/* Logo */}  
 
 <Link href="/" className="flex items-center text-gray-700 text-xl font-bold">
   <Image

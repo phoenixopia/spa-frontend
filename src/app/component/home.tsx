@@ -5,8 +5,8 @@ import React from 'react';
 const Home: React.FC = () => {
   return (
     <section
-      className="relative w-full h-screen flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: "url('Images/background.jpg')" }}
+      className="relative w-100% h-screen flex items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: "url('Images/background.jpg')"}}
     >
       <div className="absolute inset-0 bg-opacity-50"></div>
       <div className="relative text-center text-white px-4" style={{ fontFamily: "'Metal Mania', cursive" }}>

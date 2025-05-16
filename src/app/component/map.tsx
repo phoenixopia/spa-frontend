@@ -1,3 +1,4 @@
+'use client';
 import Head from "next/head";
 
 const MapPage = () => {
@@ -11,7 +12,6 @@ const MapPage = () => {
         style={{ border: 0 }}
         allowFullScreen
         loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
       />
     </div>
   );

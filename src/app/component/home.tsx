@@ -17,10 +17,10 @@ const Home: React.FC = () => {
           Experience the essence of Ethiopian beauty and self-care with Fana Traditional Steam where tradition meets luxury to celebrate your natural glow.
         </p>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
+        <div className="flex flex-col w-full items-center sm:flex-row justify-center gap-4">
           <a
             href="/booking"
-            className="px-6 py-3 text-lg font-medium bg-[#209747] text-white rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+            className="px-6 py-3 text-lg font-medium bg-[#209747] max-w-[8rem] text-white rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
           >
             Book Now
           </a>

@@ -4,24 +4,16 @@ import React from 'react';
 
 const Home: React.FC = () => {
   return (
-
-    <section className="relative lg:static w-full lg:h-screen flex items-center justify-center mb-50 sm:mb-100 lg:mb-0">
-      {/* Image as element */}
-      <img
-        src="Images/background.jpg"
-        alt="Background"
-        className="absolute lg:static top-0 left-0 w-full lg:h-screen"
-      />
-
-      {/* Foreground content */}
-      <div
-        className="absolute lg:block text-center text-white px-4 top-16 left-15 mt-20 sm:top-[12%] sm:left-[34%]"
-        style={{ fontFamily: "'Metal Mania', cursive" }}
-      >
-        <h1 className="hidden sm:flex lg:ml-10 text-2xl lg:text-6xl font-bold mb-6 text-[#209747]">
+    <section
+      className="relative w-full h-screen flex items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: "url('Images/background.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-opacity-50"></div>
+      <div className="relative text-center text-white px-4" style={{ fontFamily: "'Metal Mania', cursive" }}>
+        <h1 className="text-6xl font-bold mb-6 text-[#209747]">
           Fana Traditional Steam
         </h1>
-        <p className="hidden lg:block max-w-2xl mx-auto font-light md:text-3xl mb-8">
+        <p className="max-w-2xl mx-auto font-light md:text-3xl mb-8">
           Experience the essence of Ethiopian beauty and self-care with Fana Traditional Steam where tradition meets luxury to celebrate your natural glow.
         </p>
 

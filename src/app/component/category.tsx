@@ -52,7 +52,7 @@ export default function Categorylist() {
   }, []);
 
   return (
-    <section className="text-gray-700 body-font py-16 relative overflow-x-hidden">
+    <section className="text-gray-700 body-font mt-30 pb-16 relative overflow-x-hidden">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
         <motion.div
           className="text-center mb-12"

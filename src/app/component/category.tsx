@@ -127,28 +127,33 @@ export default function Categorylist() {
       </div>
   
       {/* Swiper Navigation Buttons - Always rendered */}
-      <div className="absolute top-1/2 transform -translate-y-1/2 z-10 pl-8 lg:pl-13 hidden lg:block">
-        <button
-          disabled={loading}
-          onClick={() => swiperRef.current?.slidePrev()}
-          className={`${
-            loading ? "opacity-0 cursor-not-allowed" : ""
-          } bg-[#209747] text-white px-3 py-2 rounded-full shadow-lg`}
-        >
-          ❮
-        </button>
-      </div>
-      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 pr-8 lg:pr-13 hidden lg:block">
-        <button
-          disabled={loading}
-          onClick={() => swiperRef.current?.slideNext()}
-          className={`${
-            loading ? "opacity-0 cursor-not-allowed" : ""
-          } bg-[#209747] text-white px-3 py-2 rounded-full shadow-lg`}
-        >
-          ❯
-        </button>
-      </div>
+      {categories.length > 0 && (
+  <>
+    <div className="absolute top-1/2 transform -translate-y-1/2 z-10 pl-8 lg:pl-13 hidden lg:block">
+      <button
+        disabled={loading}
+        onClick={() => swiperRef.current?.slidePrev()}
+        className={`${
+          loading ? "opacity-0 cursor-not-allowed" : ""
+        } bg-[#209747] text-white px-3 py-2 rounded-full shadow-lg`}
+      >
+        ❮
+      </button>
+    </div>
+
+    <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 pr-8 lg:pr-13 hidden lg:block">
+      <button
+        disabled={loading}
+        onClick={() => swiperRef.current?.slideNext()}
+        className={`${
+          loading ? "opacity-0 cursor-not-allowed" : ""
+        } bg-[#209747] text-white px-3 py-2 rounded-full shadow-lg`}
+      >
+        ❯
+      </button>
+    </div>
+  </>
+      )}
     </section>
   );  
 }

@@ -12,7 +12,6 @@ interface FooterLink {
 }
 
 const URL = process.env.NEXT_PUBLIC_APP_URL;
-        console.log("API URL in the footer:", URL);
 
 const Footer = () => {
   const [footerLinks, setFooterLinks] = useState<FooterLink[]>([]);
@@ -22,8 +21,6 @@ const Footer = () => {
     const fetchFooterLinks = async () => {
       try {
         const response = await axios.get<{ data: FooterLink[] }>(`${URL}/footer-links/`);
-        console.log("API URL:", `${URL}/footer-links`);
-        console.log(response.data);
 
         if (Array.isArray(response.data.data)) {
           setFooterLinks(response.data.data);
@@ -47,7 +44,8 @@ const Footer = () => {
           <div className="mb-4 md:mb-0">
             <p className="py-2">&copy; 2025</p>
             <p className='mb-10'>All Rights Reserved.</p>
-
+            <p><a href='https://phoenixopia.com/en/'  className='text-orange-600'>Phoenixopia Solution
+</a></p>
             <div className="flex space-x-6 mt-8 md:my-4">
               {/* Social Icons */}
 {/* Footer Social Icons */}

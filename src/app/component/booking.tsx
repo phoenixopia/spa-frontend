@@ -30,6 +30,7 @@ interface Branch {
 const BookingPage = () => {
   const [services, setServices] = useState<Service[]>([]);
   const [branches, setBranches] = useState<Branch[]>([]);
+  const [selectedBranchName, setSelectedBranchName] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -50,10 +51,7 @@ const BookingPage = () => {
       try {
         const response = await axios.get<{ data: Service[] }>(`${URL}/service`);
         setServices(response.data.data,);
-        console.log("Fetched services:", response.data.data);
-        console.log(response);
       } catch (error) {
-        console.error("Error fetching services:", error);
         setErrorMessage("Failed to load services. Please try again later.");
       }
     };
@@ -67,9 +65,7 @@ const BookingPage = () => {
       try {
         const response = await axios.get<{ data: Branch[] }>(`${URL}/branch`);
         setBranches(response.data.data);
-        console.log(response);
       } catch (error) {
-        console.error("Error fetching branches:", error);
         setErrorMessage("Failed to load branches. Please try again later.");
       }
     };
@@ -77,10 +73,17 @@ const BookingPage = () => {
     fetchBranches();
   }, []);
 
-  // Handle input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const { name, value } = e.target;
+  setFormData({ ...formData, [name]: value });
+  
+  // If this is the branch selection, also update the selected branch name
+  if (name === "branchId") {
+    const selectedBranch = branches.find(branch => branch.id === value);
+    console.log("Selected branch:", selectedBranch?.name);
+    setSelectedBranchName(selectedBranch ? selectedBranch.name : "");
+  }
+};
 
   // Handle phone number input with validation
   const handlePhoneNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -127,7 +130,6 @@ const BookingPage = () => {
 
 
       const response = await axios.post(`${URL}/booking/create`, payload);
-      console.log("Response:", response.status, response.data);
 
       if (response.status === 201) {
         router.push("/thankyou");
@@ -135,7 +137,6 @@ const BookingPage = () => {
         throw new Error("Booking failed");
       }
     } catch (error) {
-      console.error("Error submitting booking:", error);
       setErrorMessage("Failed to book. Please try again.");
     }
 
@@ -276,8 +277,7 @@ const BookingPage = () => {
         </div>
       </section>
 
-      <MapPage />
-      <Footer />
+<MapPage selectedBranchName={selectedBranchName} />      <Footer />
     </div>
   );
 };

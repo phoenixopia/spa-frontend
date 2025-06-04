@@ -22,8 +22,6 @@ export default function Blogs() {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get<{ data: Blog[] }>(`${URL}/blog`);
-        console.log("API URL:", `${URL}/blog\n\n`);
-        console.log(response.data, "\n\n");
         
         if (Array.isArray(response.data.data)) {
           setBlogs(response.data.data);
